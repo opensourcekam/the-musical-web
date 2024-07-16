@@ -1,0 +1,128 @@
+/******************************************************************************
+START Glitch hello-app default styles
+
+The styles in this section do some minimal CSS resets, set default fonts and 
+colors, and handle the layout for our footer and "Remix on Glitch" button. If
+you're new to CSS they may seem a little complicated, but you can scroll down
+to this section's matching END comment to see page-specific styles.
+******************************************************************************/
+
+
+/* 
+  The style rules specify elements by type and by attributes such as class and ID
+  Each section indicates an element or elements, then lists the style properties to apply
+  See if you can cross-reference the rules in this file with the elements in index.html
+*/
+
+/* Our default values set as CSS variables */
+:root {
+    --color-bg: #69F7BE;
+    --color-text-main: #000000;
+    --color-primary: #FFFF00;
+    --wrapper-height: 87vh;
+    --image-max-width: 300px;
+    --image-margin: 3rem;
+    --font-family: Verdana, "HK Grotesk";
+    --font-family-header: Verdana, "HK Grotesk";
+  }
+  
+  body {
+    cursor: pointer;
+    font-family: var(--font-family);
+    transition: all 20s ease;
+  }
+  
+  .wrapper {
+    min-height: var(--wrapper-height);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+  }
+  
+  .gradient {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: radial-gradient(rgba(190,50,100,0), rgba(255,100,0,1), rgba(255,120,100,1));
+    width: 100vw;
+    height: 100vh;
+  }
+  
+  .gradient2 {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: linear-gradient(to top, rgba(10,50,100,0), rgba(255,100,0,0), rgba(255,120,100,1));
+    width: 100vw;
+    height: 100vh;
+  }
+  
+  #audioElement {
+    display: none;
+  }
+  
+  #playButton {
+    position: absolute; 
+    left: 0; 
+    right: 0; 
+    top: 0;
+    bottom: 0;
+    border: 20px solid white;
+    height: 100vh;
+    box-sizing: border-box;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  @keyframes breathe {
+    0%, 100% {
+      border-width: 20px;
+    }
+    50% {
+      border-width: 100px; /* Increase the border width for the "inhale" effect */
+    }
+  }
+  
+  #playButton small {
+    font-style: italic;
+    font-weight: bold;
+    color: black;
+    padding: 1rem;
+    font-size: 52px;
+    text-align: center;
+  }
+  
+  #playButton.breathing {
+    animation: breathe 12s ease-in-out infinite;
+  }
+  
+  .time {
+    position: absolute; 
+    bottom: 0; 
+    right: 0;
+    padding: 0.5rem;
+    color: #E9967A;
+    font-size: 10px;
+    font-weight: lighter;
+  }
+  
+  #backgroundImage {
+    opacity: 0.1;
+    height: 100vh;
+    width: 100vw;
+    transition: opacity 2s ease-in-out;
+    z-index: -1;
+  }
+  
+  #overlayImage {
+    opacity: 0;
+    z-index: -2; /* Ensure the overlay image is behind the main image */
+  }

@@ -1,0 +1,13 @@
+{
+  "name": "the-musical-web",
+  "projects": [
+    "breathing",
+    "imageScanSynth",
+    "electricBrightness",
+    "electricBrightnessSound",
+    "starsounds2d",
+    "starsounds3d",
+    "roughWaters",
+    "roughWatersAudioZoom"
+  ]
+}
