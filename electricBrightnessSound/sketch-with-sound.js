@@ -38,7 +38,7 @@ function setup() {
 		decay: 0.2,
 		sustain: 0.9,
 		release: 0.2,
-		baseUrl: "./samples/",
+		baseUrl: "/electricBrightnessSound/samples/",
 		onload: () => {
 			console.log('Sampler loaded');
 		}
