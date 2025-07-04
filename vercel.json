@@ -4,7 +4,7 @@
   "trailingSlash": false,
   "rewrites": [
     {
-      "source": "/:project/build",
+      "source": "/:project",
       "destination": "/:project/index-p5.html"
     },
     {
