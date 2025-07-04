@@ -56,15 +56,7 @@
       "destination": "/breathing/index.html"
     },
     {
-      "source": "/breathing/(.*)",
-      "destination": "/breathing/index.html"
-    },
-    {
       "source": "/electricBrightness",
-      "destination": "/electricBrightness/index.html"
-    },
-    {
-      "source": "/electricBrightness/(.*)",
       "destination": "/electricBrightness/index.html"
     },
     {
@@ -72,15 +64,7 @@
       "destination": "/electricBrightnessSound/index.html"
     },
     {
-      "source": "/electricBrightnessSound/(.*)",
-      "destination": "/electricBrightnessSound/index.html"
-    },
-    {
       "source": "/imageScanSynth",
-      "destination": "/imageScanSynth/index.html"
-    },
-    {
-      "source": "/imageScanSynth/(.*)",
       "destination": "/imageScanSynth/index.html"
     },
     {
@@ -88,15 +72,7 @@
       "destination": "/roughWaters/index.html"
     },
     {
-      "source": "/roughWaters/(.*)",
-      "destination": "/roughWaters/index.html"
-    },
-    {
       "source": "/roughWatersAudioZoom",
-      "destination": "/roughWatersAudioZoom/index.html"
-    },
-    {
-      "source": "/roughWatersAudioZoom/(.*)",
       "destination": "/roughWatersAudioZoom/index.html"
     },
     {
@@ -104,15 +80,7 @@
       "destination": "/starsounds2d/index.html"
     },
     {
-      "source": "/starsounds2d/(.*)",
-      "destination": "/starsounds2d/index.html"
-    },
-    {
       "source": "/starsounds3d",
-      "destination": "/starsounds3d/index.html"
-    },
-    {
-      "source": "/starsounds3d/(.*)",
       "destination": "/starsounds3d/index.html"
     }
   ],
