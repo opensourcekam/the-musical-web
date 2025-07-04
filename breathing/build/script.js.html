@@ -1,0 +1,191 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>script.js</title><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.2.0/build/styles/github-dark.min.css"><script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.2.0/build/highlight.min.js"></script><script>hljs.highlightAll();</script><style>body {
+  background: hsl(215, 26%, 7%);
+}
+.content {
+  margin: 0 auto;
+}</style></head><body><div class="content"><pre><code class="language-javascript">document.addEventListener(&quot;DOMContentLoaded&quot;, () =&gt; {
+	const audioElement = document.getElementById(&quot;audioElement&quot;);
+	const playButton = document.getElementById(&quot;playButton&quot;);
+	const backgroundImage = document.getElementById(&quot;backgroundImage&quot;);
+	const overlayImage = document.getElementById(&quot;overlayImage&quot;);
+	const gradient2 = document.querySelector(&quot;.gradient2&quot;);
+  
+	audioElement.volume = 1.0; // Ensure volume is set to 100%
+  
+	let isPlaying = false;
+	let audioContext, analyzer, dataArray, source, angle;
+	let currentIndex = 0;
+	let intervalId;
+  
+	function setupAudioContext() {
+	  console.log(&quot;Setting up audio context&quot;);
+	  audioContext = new (window.AudioContext || window.webkitAudioContext)();
+	  analyzer = audioContext.createAnalyser();
+	  source = audioContext.createMediaElementSource(audioElement);
+	  source.connect(analyzer);
+	  analyzer.connect(audioContext.destination); // Ensure connection to destination for playback
+  
+	  analyzer.fftSize = 256;
+	  const bufferLength = analyzer.frequencyBinCount;
+	  dataArray = new Uint8Array(bufferLength);
+	  requestAnimationFrame(updateGradient);
+	}
+  
+	function updateGradient() {
+	  if (!isPlaying) return;
+	  analyzer.getByteFrequencyData(dataArray);
+	  const averageFrequency =
+		dataArray.reduce((sum, value) =&gt; sum + value, 0) / dataArray.length;
+  
+	  const red = Math.min(190, averageFrequency * 8);
+	  const green = Math.min(255, averageFrequency * 10);
+	  const blue = Math.min(255, averageFrequency);
+  
+	  const gradient = document.querySelector(&quot;.gradient&quot;);
+  
+	  gradient.style.backgroundImage = `
+	  radial-gradient(
+		rgba(190,${green},${blue},1),
+		rgba(255,${green},${blue},0.3), 
+		rgba(255,${green},${blue},.8)
+	  )`;
+	  
+	  console.log(angle);
+  
+	  gradient2.style.backgroundImage = `
+		linear-gradient(${angle}deg,
+		  rgba(131,58,180,0.1) 0%,
+		  rgba(253,29,29,0.2) 50%,
+		  rgba(252,176,69,0.1) 100%
+		)`;
+  
+	  requestAnimationFrame(updateGradient);
+	}
+  
+	audioElement.addEventListener(&quot;timeupdate&quot;, updatePage);
+  
+	function updatePage(data) {
+	  const currentTime = data.srcElement.currentTime;
+	  const duration = data.srcElement.duration;
+	  const percentageComplete = Math.floor(100 - (currentTime / duration) * 100);
+	  document.querySelector(&quot;.time&quot;).innerHTML = `${Math.floor(
+		percentageComplete
+	  )}%`;
+  
+	  updateImageOpacity(currentTime, duration);
+	}
+  
+	function updateImageOpacity(currentTime, duration) {
+	  const opacity = Math.min(0.05 + (currentTime / duration) * 0.95, 1); // Ensure opacity doesn't exceed 1
+	  backgroundImage.style.opacity = opacity;
+	  const percentageComplete = Math.floor(100 - (currentTime / duration) * 100);
+  
+	  let newSrc = null;
+	  if (percentageComplete &lt;= 90) {
+		newSrc =
+		  &quot;https://cdn.glitch.global/01485531-a16b-4ce3-9dcc-f9be1dd94e81/IMG_0324.jpeg?v=1718393775053&quot;;
+	  }
+	  if (percentageComplete &lt;= 70) {
+		newSrc =
+		  &quot;https://cdn.glitch.global/01485531-a16b-4ce3-9dcc-f9be1dd94e81/IMG_0322.jpeg?v=1718394441809&quot;;
+	  }
+	  if (percentageComplete &lt;= 10) {
+		newSrc =
+		  &quot;https://cdn.glitch.global/01485531-a16b-4ce3-9dcc-f9be1dd94e81/IMG_0327.jpeg?v=1718394450645&quot;;
+	  }
+  
+	  if (newSrc &amp;&amp; newSrc !== overlayImage.src) {
+		overlayImage.src = newSrc;
+		overlayImage.style.opacity = 1;
+		backgroundImage.style.opacity = 0;
+  
+		setTimeout(() =&gt; {
+		  backgroundImage.src = newSrc;
+		  backgroundImage.style.opacity = opacity;
+		  overlayImage.style.opacity = 0;
+		}, 2000); // The duration should match the CSS transition duration
+	  }
+	}
+  
+	playButton.addEventListener(&quot;click&quot;, () =&gt; {
+	  console.log(&quot;Audio play event triggered&quot;);
+	  if (isPlaying) {
+		isPlaying = false;
+		audioElement.pause();
+	  } else {
+		isPlaying = true;
+		if (!audioContext) {
+		  console.log(&quot;Setup audio context!&quot;);
+		  setupAudioContext();
+		}
+		audioElement
+		  .play()
+		  .then(() =&gt; {
+			console.log(&quot;Audio is playing&quot;);
+		  })
+		  .catch((error) =&gt; {
+			console.error(&quot;Error playing audio:&quot;, error);
+		  });
+	  }
+	});
+  
+	audioElement.addEventListener(&quot;pause&quot;, () =&gt; {
+	  console.log(&quot;Audio pause event triggered, ending experience&quot;);
+	  alert(&quot;Thank you, feel free to take a screenshot as a digital keepsake.&quot;);
+	});
+  
+	audioElement.addEventListener(&quot;volumechange&quot;, () =&gt; {
+	  console.log(&quot;Audio volume:&quot;, audioElement.volume);
+	  // IDEA: turn up volume to make brighter &amp; inverse
+	});
+  
+	audioElement.addEventListener(&quot;error&quot;, (e) =&gt; {
+	  console.error(&quot;Audio error:&quot;, e);
+	});
+  
+	document.addEventListener(&quot;mousemove&quot;, (event) =&gt; {
+	  const width = window.innerWidth;
+	  const height = window.innerHeight;
+	  const x = event.clientX;
+	  const y = event.clientY;
+	  angle =
+		Math.atan2(y - height / 2, x - width / 2) * (180 / Math.PI) + 180;
+	});
+  
+	const texts = document.querySelectorAll(&quot;#playButton small&quot;);
+  
+	function showText(index) {
+	  texts.forEach((text, i) =&gt; {
+		text.style.display = i === index ? &quot;block&quot; : &quot;none&quot;;
+	  });
+	}
+  
+	function cycleText() {
+	  showText(currentIndex);
+	  currentIndex = (currentIndex + 1) % texts.length;
+	}
+  
+	function startCycling() {
+	  intervalId = setInterval(cycleText, 4000); // Change text every 4 seconds (adjust as needed)
+	  cycleText(); // Initial call to show the first text
+	}
+  
+	function stopCycling() {
+	  clearInterval(intervalId);
+	  playButton.innerHTML = &quot;&quot;; // Remove all content inside playButton
+	}
+  
+	function startBreathing() {
+	  if (!playButton.classList.contains(&quot;breathing&quot;)) {
+		playButton.classList.add(&quot;breathing&quot;);
+	  } else {
+		playButton.classList.remove(&quot;breathing&quot;);
+	  }
+	}
+  
+	playButton.addEventListener(&quot;click&quot;, stopCycling);
+	playButton.addEventListener(&quot;click&quot;, startBreathing);
+  
+	startCycling(); // Start the text cycling when the page loads
+  });
+  </code></pre></div></body></html>

@@ -1,0 +1,203 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Electric Brightness - Animated Star Field Generator</title><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4/dist/semantic.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.2.0/build/styles/default.min.css"><style>body {
+  max-width: 800px;
+  margin: auto;
+  padding: 5px;
+}
+#readme-title {
+  display: block;
+  padding-bottom: 5px;
+  border-bottom: 1px dotted #ccc;
+}</style></head><body><h1 id="electric-brightness---animated-star-field-generator">Electric Brightness - Animated Star Field Generator</h1>
+<p>A p5.js creative coding project that transforms bright pixels from an image into an animated star field, connecting them with flowing curved lines to create a mesmerizing visual experience.</p>
+<h2 id="🌟-overview">🌟 Overview</h2>
+<p>This project analyzes a photograph to detect bright pixels (stars) and animates them by drawing curved Bezier lines between adjacent bright points. The result is a dynamic star field that gradually reveals itself, creating a beautiful connection between photography and generative art.</p>
+<h2 id="✨-features">✨ Features</h2>
+<h3 id="image-analysis">Image Analysis</h3>
+<ul>
+<li><strong>Brightness Detection</strong>: Automatically identifies bright pixels above a configurable threshold</li>
+<li><strong>Pixel Sorting</strong>: Orders stars by brightness for controlled animation progression</li>
+<li><strong>Image Scaling</strong>: Responsive canvas that adapts to window size while maintaining aspect ratio</li>
+</ul>
+<h3 id="animation-system">Animation System</h3>
+<ul>
+<li><strong>Progressive Reveal</strong>: Stars appear gradually at a controlled speed</li>
+<li><strong>Curved Connections</strong>: Bezier curves create smooth, organic lines between stars</li>
+<li><strong>Noise Integration</strong>: Subtle randomness in control points for natural movement</li>
+<li><strong>Gradient Effects</strong>: Smooth color transitions along the connecting lines</li>
+</ul>
+<h3 id="visual-design">Visual Design</h3>
+<ul>
+<li><strong>Responsive Layout</strong>: Canvas centers automatically and scales with window size</li>
+<li><strong>Dark Theme</strong>: Black background for optimal star visibility</li>
+<li><strong>Smooth Rendering</strong>: High-resolution gradient steps for crisp line quality</li>
+</ul>
+<h2 id="🛠-technical-implementation">🛠 Technical Implementation</h2>
+<h3 id="core-technologies">Core Technologies</h3>
+<ul>
+<li><strong>p5.js</strong> - Creative coding framework for graphics and animation</li>
+<li><strong>HTML5 Canvas</strong> - High-performance graphics rendering</li>
+<li><strong>JavaScript ES6+</strong> - Modern JavaScript features for pixel manipulation</li>
+</ul>
+<h3 id="key-components">Key Components</h3>
+<ul>
+<li><code>findBrightestPixels()</code> - Analyzes image pixels for brightness detection</li>
+<li><code>drawCurvedLines()</code> - Renders Bezier curves between star points</li>
+<li><code>preload()</code> - Loads and prepares the source image</li>
+<li><code>setup()</code> - Initializes canvas and image processing</li>
+</ul>
+<h3 id="algorithm-details">Algorithm Details</h3>
+<ol>
+<li><strong>Pixel Analysis</strong>: Scans image pixels to find those above brightness threshold</li>
+<li><strong>Star Sorting</strong>: Orders detected points by brightness value</li>
+<li><strong>Bezier Calculation</strong>: Creates control points with noise for organic curves</li>
+<li><strong>Progressive Animation</strong>: Gradually reveals stars at controlled speed</li>
+<li><strong>Line Rendering</strong>: Draws high-resolution gradient lines between points</li>
+</ol>
+<h2 id="🚀-getting-started">🚀 Getting Started</h2>
+<h3 id="prerequisites">Prerequisites</h3>
+<ul>
+<li>Node.js installed on your system</li>
+<li>A modern web browser with Canvas support</li>
+</ul>
+<h3 id="installation--setup">Installation &amp; Setup</h3>
+<ol>
+<li><p><strong>Install p5-server globally:</strong></p>
+<pre><code class="language-bash">npm install -g p5-server
+</code></pre>
+</li>
+<li><p><strong>Navigate to the project directory:</strong></p>
+<pre><code class="language-bash">cd electricBrightness
+</code></pre>
+</li>
+<li><p><strong>Start the development server:</strong></p>
+<pre><code class="language-bash">p5 serve --open
+</code></pre>
+<p>This will:</p>
+<ul>
+<li>Start a local development server (usually on port 3000)</li>
+<li>Open your browser automatically</li>
+<li>Enable live reload for development</li>
+</ul>
+</li>
+</ol>
+<h3 id="alternative-setup-without-p5-server">Alternative Setup (Without p5-server)</h3>
+<p>If you prefer not to use p5-server, you can run this project with any local web server:</p>
+<pre><code class="language-bash"># <span class="hljs-title class_">Using</span> <span class="hljs-title class_">Python</span> <span class="hljs-number">3</span>
+python -m http.<span class="hljs-property">server</span> <span class="hljs-number">8000</span>
+
+# <span class="hljs-title class_">Using</span> <span class="hljs-title class_">Node</span>.<span class="hljs-property">js</span> (<span class="hljs-keyword">if</span> you have http-server installed)
+npx http-server
+
+# <span class="hljs-title class_">Using</span> <span class="hljs-variable constant_">PHP</span>
+php -S <span class="hljs-attr">localhost</span>:<span class="hljs-number">8000</span>
+</code></pre>
+<p>Then open <code>http://localhost:8000</code> in your browser.</p>
+<h2 id="🎮-how-to-use">🎮 How to Use</h2>
+<ol>
+<li><strong>Load the Page</strong>: The animation will start automatically</li>
+<li><strong>Watch the Stars</strong>: Observe as bright pixels from the image are gradually connected</li>
+<li><strong>Full Screen</strong>: For the best experience, view in full-screen mode</li>
+<li><strong>Explore Variations</strong>: Try different source images by replacing <code>IMG_8153.jpeg</code></li>
+</ol>
+<h2 id="📁-project-structure">📁 Project Structure</h2>
+<pre><code>electricBrightness/
+├── index.<span class="hljs-property">html</span>              # <span class="hljs-title class_">Main</span> <span class="hljs-variable constant_">HTML</span> file <span class="hljs-keyword">with</span> p5.<span class="hljs-property">js</span> setup
+├── electric-brightness.<span class="hljs-property">js</span>   # <span class="hljs-title class_">Core</span> p5.<span class="hljs-property">js</span> sketch and animation logic
+├── <span class="hljs-variable constant_">IMG_8153</span>.<span class="hljs-property">jpeg</span>           # <span class="hljs-title class_">Source</span> image <span class="hljs-keyword">for</span> star detection
+└── <span class="hljs-variable constant_">README</span>.<span class="hljs-property">md</span>               # <span class="hljs-title class_">This</span> file
+</code></pre>
+<h2 id="⚙️-configuration">⚙️ Configuration</h2>
+<h3 id="adjustable-parameters">Adjustable Parameters</h3>
+<ul>
+<li><code>speed</code> - Controls how fast stars appear (default: 0.41)</li>
+<li><code>threshold</code> - Brightness threshold for star detection (default: 200)</li>
+<li><code>strokeWeightValue</code> - Thickness of connecting lines (default: 0.4)</li>
+<li><code>gradientResolution</code> - Smoothness of line gradients (default: 0.01)</li>
+</ul>
+<h3 id="customization-examples">Customization Examples</h3>
+<pre><code class="language-javascript"><span class="hljs-comment">// Faster animation</span>
+<span class="hljs-keyword">let</span> speed = <span class="hljs-number">0.8</span>;
+
+<span class="hljs-comment">// More sensitive star detection</span>
+<span class="hljs-keyword">let</span> threshold = <span class="hljs-number">150</span>;
+
+<span class="hljs-comment">// Thicker lines</span>
+<span class="hljs-keyword">let</span> strokeWeightValue = <span class="hljs-number">1.0</span>;
+
+<span class="hljs-comment">// Smoother gradients</span>
+<span class="hljs-keyword">let</span> gradientResolution = <span class="hljs-number">0.005</span>;
+</code></pre>
+<h2 id="🎨-visual-elements">🎨 Visual Elements</h2>
+<ul>
+<li><strong>Source Image</strong>: The photograph that provides the star data</li>
+<li><strong>Animated Lines</strong>: Flowing Bezier curves connecting bright pixels</li>
+<li><strong>Progressive Reveal</strong>: Gradual appearance of the star field</li>
+<li><strong>Responsive Canvas</strong>: Automatically scales to fit the window</li>
+</ul>
+<h2 id="🔧-development">🔧 Development</h2>
+<h3 id="live-reload-development">Live Reload Development</h3>
+<p>With p5-server, any changes you make to the files will automatically reload in the browser:</p>
+<pre><code class="language-bash">p5 serve --open
+</code></pre>
+<h3 id="key-functions">Key Functions</h3>
+<ul>
+<li><code>preload()</code> - Loads the source image</li>
+<li><code>setup()</code> - Initializes canvas and processes image pixels</li>
+<li><code>findBrightestPixels()</code> - Detects and sorts bright pixels</li>
+<li><code>drawCurvedLines()</code> - Renders animated Bezier connections</li>
+<li><code>draw()</code> - Main animation loop</li>
+</ul>
+<h3 id="performance-considerations">Performance Considerations</h3>
+<ul>
+<li>Image processing happens once during setup</li>
+<li>Bezier calculations are optimized for smooth animation</li>
+<li>Canvas clearing and redrawing maintains consistent frame rate</li>
+</ul>
+<h2 id="🌐-browser-compatibility">🌐 Browser Compatibility</h2>
+<p>This project requires modern browsers with support for:</p>
+<ul>
+<li>HTML5 Canvas</li>
+<li>ES6+ JavaScript features</li>
+<li>p5.js library</li>
+</ul>
+<p>Tested and working in:</p>
+<ul>
+<li>Chrome 60+</li>
+<li>Firefox 55+</li>
+<li>Safari 11+</li>
+<li>Edge 79+</li>
+</ul>
+<h2 id="📱-responsive-design">📱 Responsive Design</h2>
+<p>The canvas automatically:</p>
+<ul>
+<li>Scales to fit 80% of the window size</li>
+<li>Maintains the original image aspect ratio</li>
+<li>Centers itself on the page</li>
+<li>Adapts to different screen sizes</li>
+</ul>
+<h2 id="🖼️-image-requirements">🖼️ Image Requirements</h2>
+<p>The source image should be:</p>
+<ul>
+<li>High resolution for better star detection</li>
+<li>Good contrast between bright and dark areas</li>
+<li>In JPEG or PNG format</li>
+<li>Named <code>IMG_8153.jpeg</code> or update the filename in the code</li>
+</ul>
+<h2 id="🔗-related-projects">🔗 Related Projects</h2>
+<p>This project has a companion version with sound integration:</p>
+<ul>
+<li><strong>Electric Brightness Sound</strong> - Adds audio-reactive elements to the star field</li>
+</ul>
+<h2 id="🤝-contributing">🤝 Contributing</h2>
+<p>This is a personal project, but suggestions and feedback are welcome! Feel free to:</p>
+<ul>
+<li>Report bugs or issues</li>
+<li>Suggest new features or effects</li>
+<li>Share your own star field creations</li>
+<li>Propose improvements to the animation algorithm</li>
+</ul>
+<h2 id="📄-license">📄 License</h2>
+<p>This project is open source and available under the MIT License.</p>
+<hr>
+<p><em>Created as part of a creative coding portfolio by Kameron Robinson showcasing generative art, image processing, and interactive visual experiences.</em> </p>
+</body></html>
