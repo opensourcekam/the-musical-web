@@ -81,6 +81,7 @@
     }
     .nav-label {
       margin-left: 0.2rem;
+      color: white;
     }
     .nav-divider {
       width: 1px;
@@ -121,6 +122,38 @@
     .container {
       max-width: 1200px;
       margin: 0 auto;
+    }
+    
+    .top-info {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 2.5rem 0.5rem 2.5rem;
+      pointer-events: none;
+      z-index: 2000;
+    }
+    .location, .clock {
+      color: #fff;
+      font-size: 1.1rem;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      pointer-events: auto;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.18);
+    }
+    .clock {
+      font-variant-numeric: tabular-nums;
+    }
+    @media (max-width: 600px) {
+      .top-info {
+        padding: 0.7rem 0.7rem 0.2rem 0.7rem;
+      }
+      .location, .clock {
+        font-size: 0.95rem;
+      }
     }
     
     h1 {
@@ -297,16 +330,15 @@
   </style>
 </head>
 <body>
+  <div class="top-info">
+    <div class="location">New York City</div>
+    <div class="clock" id="clock"></div>
+  </div>
   <div class="glass-nav">
     <nav>
       <ul>
         <li class="nav-item active"><a href="/" title="Home"><span class="nav-icon">🏠</span><span class="nav-label">Home</span></a></li>
         <li class="nav-item"><a href="/about.html" title="About"><span class="nav-icon">👤</span><span class="nav-label">About</span></a></li>
-        <li class="nav-item"><a href="#" title="Work"><span class="nav-icon">🗂️</span><span class="nav-label">Work</span></a></li>
-        <li class="nav-item"><a href="#" title="Blog"><span class="nav-icon">📖</span><span class="nav-label">Blog</span></a></li>
-        <li class="nav-item"><a href="#" title="Gallery"><span class="nav-icon">🖼️</span><span class="nav-label">Gallery</span></a></li>
-        <li class="nav-item nav-divider"></li>
-        <li class="nav-item nav-moon"><button title="Toggle dark mode" aria-label="Toggle dark mode">🌙</button></li>
       </ul>
     </nav>
   </div>
@@ -419,5 +451,16 @@
       </div>
     </div>
   </div>
+  <script>
+    function updateClock() {
+      const now = new Date();
+      const hours = now.getHours().toString().padStart(2, '0');
+      const minutes = now.getMinutes().toString().padStart(2, '0');
+      const seconds = now.getSeconds().toString().padStart(2, '0');
+      document.getElementById('clock').textContent = `${hours}:${minutes}:${seconds}`;
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+  </script>
 </body>
 </html> 

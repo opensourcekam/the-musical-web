@@ -81,6 +81,7 @@
     }
     .nav-label {
       margin-left: 0.2rem;
+      color: white;
     }
     .nav-divider {
       width: 1px;
@@ -234,23 +235,19 @@
   </style>
 </head>
 <body>
+  <div class="top-info">
+    <div class="location">New York City</div>
+    <div class="clock" id="clock"></div>
+  </div>
   <div class="glass-nav">
     <nav>
       <ul>
         <li class="nav-item"><a href="/" title="Home"><span class="nav-icon">🏠</span><span class="nav-label">Home</span></a></li>
         <li class="nav-item active"><a href="/about.html" title="About"><span class="nav-icon">👤</span><span class="nav-label">About</span></a></li>
-        <li class="nav-item"><a href="#" title="Work"><span class="nav-icon">🗂️</span><span class="nav-label">Work</span></a></li>
-        <li class="nav-item"><a href="#" title="Blog"><span class="nav-icon">📖</span><span class="nav-label">Blog</span></a></li>
-        <li class="nav-item"><a href="#" title="Gallery"><span class="nav-icon">🖼️</span><span class="nav-label">Gallery</span></a></li>
-        <li class="nav-item nav-divider"></li>
-        <li class="nav-item nav-moon"><button title="Toggle dark mode" aria-label="Toggle dark mode">🌙</button></li>
       </ul>
     </nav>
   </div>
   <div class="container">
-    <div class="nav">
-      <a href="/">← Back to Projects</a>
-    </div>
     
     <h1>About</h1>
     
@@ -313,5 +310,16 @@
       </div>
     </div>
   </div>
+  <script>
+    function updateClock() {
+      const now = new Date();
+      const hours = now.getHours().toString().padStart(2, '0');
+      const minutes = now.getMinutes().toString().padStart(2, '0');
+      const seconds = now.getSeconds().toString().padStart(2, '0');
+      document.getElementById('clock').textContent = `${hours}:${minutes}:${seconds}`;
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+  </script>
 </body>
 </html> 
