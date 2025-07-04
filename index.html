@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Musical Web - Creative Coding Portfolio</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #000;
+      color: #fff;
+      margin: 0;
+      padding: 40px;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    h1 {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+      text-align: center;
+      background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4);
+      background-size: 400% 400%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: gradient 8s ease infinite;
+    }
+    
+    @keyframes gradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    
+    .subtitle {
+      text-align: center;
+      font-size: 1.3rem;
+      opacity: 0.8;
+      margin-bottom: 3rem;
+    }
+    
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    
+    .project {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 2rem;
+      border-radius: 15px;
+      text-decoration: none;
+      color: #fff;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .project::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+      transition: left 0.5s;
+    }
+    
+    .project:hover::before {
+      left: 100%;
+    }
+    
+    .project:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateY(-5px);
+      border-color: rgba(255, 255, 255, 0.3);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+    
+    .project h3 {
+      margin: 0 0 1rem 0;
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+    
+    .project p {
+      margin: 0;
+      opacity: 0.8;
+      line-height: 1.5;
+    }
+    
+    .project-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+    
+    .footer {
+      text-align: center;
+      margin-top: 4rem;
+      opacity: 0.6;
+      font-size: 0.9rem;
+    }
+    
+    @media (max-width: 768px) {
+      body {
+        padding: 20px;
+      }
+      
+      h1 {
+        font-size: 2.5rem;
+      }
+      
+      .projects {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>The Musical Web</h1>
+    <p class="subtitle">
+      A collection of interactive audio-visual experiences created with p5.js and Tone.js
+    </p>
+    
+    <div class="projects">
+      <a href="/breathing" class="project">
+        <span class="project-icon">🧘‍♀️</span>
+        <h3>Breathing</h3>
+        <p>Audio-reactive meditation experience with synchronized visuals and breathing guidance</p>
+      </a>
+      
+      <a href="/electricBrightness" class="project">
+        <span class="project-icon">✨</span>
+        <h3>Electric Brightness</h3>
+        <p>Star field visualization with curved connecting lines and dynamic brightness analysis</p>
+      </a>
+      
+      <a href="/electricBrightnessSound" class="project">
+        <span class="project-icon">🎵</span>
+        <h3>Electric Brightness Sound</h3>
+        <p>Audio-reactive star field with real-time sound synthesis and frequency mapping</p>
+      </a>
+      
+      <a href="/imageScanSynth" class="project">
+        <span class="project-icon">🎨</span>
+        <h3>Image Scan Synth</h3>
+        <p>Convert images to sound through pixel analysis and color-to-frequency mapping</p>
+      </a>
+      
+      <a href="/roughWaters" class="project">
+        <span class="project-icon">🌊</span>
+        <h3>Rough Waters</h3>
+        <p>Real-time ocean wave data visualization with live surf conditions</p>
+      </a>
+      
+      <a href="/roughWatersAudioZoom" class="project">
+        <span class="project-icon">🏄‍♂️</span>
+        <h3>Rough Waters Audio Zoom</h3>
+        <p>Interactive surf spot explorer with audio-responsive text and wave data</p>
+      </a>
+      
+      <a href="/starsounds2d" class="project">
+        <span class="project-icon">⭐</span>
+        <h3>Star Sounds 2D</h3>
+        <p>2D audio-reactive star field with complex audio effects and particle systems</p>
+      </a>
+      
+      <a href="/starsounds3d" class="project">
+        <span class="project-icon">🌟</span>
+        <h3>Star Sounds 3D</h3>
+        <p>Immersive 3D audio-reactive star field with intelligent camera movement</p>
+      </a>
+    </div>
+    
+    <div class="footer">
+      <p>Created with p5.js, Tone.js, and lots of creativity 🎨</p>
+    </div>
+  </div>
+</body>
+</html> 
