@@ -4,8 +4,325 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>100 percent breathing</title>
-    <link rel="stylesheet" href="./style.css" />
-    <script src="./script.js" defer></script>
+    <style>
+      /******************************************************************************
+START Glitch hello-app default styles
+
+The styles in this section do some minimal CSS resets, set default fonts and 
+colors, and handle the layout for our footer and "Remix on Glitch" button. If
+you're new to CSS they may seem a little complicated, but you can scroll down
+to this section's matching END comment to see page-specific styles.
+******************************************************************************/
+
+
+/* 
+  The style rules specify elements by type and by attributes such as class and ID
+  Each section indicates an element or elements, then lists the style properties to apply
+  See if you can cross-reference the rules in this file with the elements in index.html
+*/
+
+/* Our default values set as CSS variables */
+:root {
+    --color-bg: #69F7BE;
+    --color-text-main: #000000;
+    --color-primary: #FFFF00;
+    --wrapper-height: 87vh;
+    --image-max-width: 300px;
+    --image-margin: 3rem;
+    --font-family: Verdana, "HK Grotesk";
+    --font-family-header: Verdana, "HK Grotesk";
+  }
+  
+  body {
+    cursor: pointer;
+    font-family: var(--font-family);
+    transition: all 20s ease;
+  }
+  
+  .wrapper {
+    min-height: var(--wrapper-height);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+  }
+  
+  .gradient {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: radial-gradient(rgba(190,50,100,0), rgba(255,100,0,1), rgba(255,120,100,1));
+    width: 100vw;
+    height: 100vh;
+  }
+  
+  .gradient2 {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: linear-gradient(to top, rgba(10,50,100,0), rgba(255,100,0,0), rgba(255,120,100,1));
+    width: 100vw;
+    height: 100vh;
+  }
+  
+  #audioElement {
+    display: none;
+  }
+  
+  #playButton {
+    position: absolute; 
+    left: 0; 
+    right: 0; 
+    top: 0;
+    bottom: 0;
+    border: 20px solid white;
+    height: 100vh;
+    box-sizing: border-box;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  @keyframes breathe {
+    0%, 100% {
+      border-width: 20px;
+    }
+    50% {
+      border-width: 100px; /* Increase the border width for the "inhale" effect */
+    }
+  }
+  
+  #playButton small {
+    font-style: italic;
+    font-weight: bold;
+    color: black;
+    padding: 1rem;
+    font-size: 52px;
+    text-align: center;
+  }
+  
+  #playButton.breathing {
+    animation: breathe 12s ease-in-out infinite;
+  }
+  
+  .time {
+    position: absolute; 
+    bottom: 0; 
+    right: 0;
+    padding: 0.5rem;
+    color: #E9967A;
+    font-size: 10px;
+    font-weight: lighter;
+  }
+  
+  #backgroundImage {
+    opacity: 0.1;
+    height: 100vh;
+    width: 100vw;
+    transition: opacity 2s ease-in-out;
+    z-index: -1;
+  }
+  
+  #overlayImage {
+    opacity: 0;
+    z-index: -2; /* Ensure the overlay image is behind the main image */
+  }
+    </style>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+	const audioElement = document.getElementById("audioElement");
+	const playButton = document.getElementById("playButton");
+	const backgroundImage = document.getElementById("backgroundImage");
+	const overlayImage = document.getElementById("overlayImage");
+	const gradient2 = document.querySelector(".gradient2");
+  
+	audioElement.volume = 1.0; // Ensure volume is set to 100%
+  
+	let isPlaying = false;
+	let audioContext, analyzer, dataArray, source, angle;
+	let currentIndex = 0;
+	let intervalId;
+  
+	function setupAudioContext() {
+	  console.log("Setting up audio context");
+	  audioContext = new (window.AudioContext || window.webkitAudioContext)();
+	  analyzer = audioContext.createAnalyser();
+	  source = audioContext.createMediaElementSource(audioElement);
+	  source.connect(analyzer);
+	  analyzer.connect(audioContext.destination); // Ensure connection to destination for playback
+  
+	  analyzer.fftSize = 256;
+	  const bufferLength = analyzer.frequencyBinCount;
+	  dataArray = new Uint8Array(bufferLength);
+	  requestAnimationFrame(updateGradient);
+	}
+  
+	function updateGradient() {
+	  if (!isPlaying) return;
+	  analyzer.getByteFrequencyData(dataArray);
+	  const averageFrequency =
+		dataArray.reduce((sum, value) => sum + value, 0) / dataArray.length;
+  
+	  const red = Math.min(190, averageFrequency * 8);
+	  const green = Math.min(255, averageFrequency * 10);
+	  const blue = Math.min(255, averageFrequency);
+  
+	  const gradient = document.querySelector(".gradient");
+  
+	  gradient.style.backgroundImage = `
+	  radial-gradient(
+		rgba(190,${green},${blue},1),
+		rgba(255,${green},${blue},0.3), 
+		rgba(255,${green},${blue},.8)
+	  )`;
+	  
+	  console.log(angle);
+  
+	  gradient2.style.backgroundImage = `
+		linear-gradient(${angle}deg,
+		  rgba(131,58,180,0.1) 0%,
+		  rgba(253,29,29,0.2) 50%,
+		  rgba(252,176,69,0.1) 100%
+		)`;
+  
+	  requestAnimationFrame(updateGradient);
+	}
+  
+	audioElement.addEventListener("timeupdate", updatePage);
+  
+	function updatePage(data) {
+	  const currentTime = data.srcElement.currentTime;
+	  const duration = data.srcElement.duration;
+	  const percentageComplete = Math.floor(100 - (currentTime / duration) * 100);
+	  document.querySelector(".time").innerHTML = `${Math.floor(
+		percentageComplete
+	  )}%`;
+  
+	  updateImageOpacity(currentTime, duration);
+	}
+  
+	function updateImageOpacity(currentTime, duration) {
+	  const opacity = Math.min(0.05 + (currentTime / duration) * 0.95, 1); // Ensure opacity doesn't exceed 1
+	  backgroundImage.style.opacity = opacity;
+	  const percentageComplete = Math.floor(100 - (currentTime / duration) * 100);
+  
+	  let newSrc = null;
+	  if (percentageComplete <= 90) {
+		newSrc =
+		  "https://cdn.glitch.global/01485531-a16b-4ce3-9dcc-f9be1dd94e81/IMG_0324.jpeg?v=1718393775053";
+	  }
+	  if (percentageComplete <= 70) {
+		newSrc =
+		  "https://cdn.glitch.global/01485531-a16b-4ce3-9dcc-f9be1dd94e81/IMG_0322.jpeg?v=1718394441809";
+	  }
+	  if (percentageComplete <= 10) {
+		newSrc =
+		  "https://cdn.glitch.global/01485531-a16b-4ce3-9dcc-f9be1dd94e81/IMG_0327.jpeg?v=1718394450645";
+	  }
+  
+	  if (newSrc && newSrc !== overlayImage.src) {
+		overlayImage.src = newSrc;
+		overlayImage.style.opacity = 1;
+		backgroundImage.style.opacity = 0;
+  
+		setTimeout(() => {
+		  backgroundImage.src = newSrc;
+		  backgroundImage.style.opacity = opacity;
+		  overlayImage.style.opacity = 0;
+		}, 2000); // The duration should match the CSS transition duration
+	  }
+	}
+  
+	playButton.addEventListener("click", () => {
+	  console.log("Audio play event triggered");
+	  if (isPlaying) {
+		isPlaying = false;
+		audioElement.pause();
+	  } else {
+		isPlaying = true;
+		if (!audioContext) {
+		  console.log("Setup audio context!");
+		  setupAudioContext();
+		}
+		audioElement
+		  .play()
+		  .then(() => {
+			console.log("Audio is playing");
+		  })
+		  .catch((error) => {
+			console.error("Error playing audio:", error);
+		  });
+	  }
+	});
+  
+	audioElement.addEventListener("pause", () => {
+	  console.log("Audio pause event triggered, ending experience");
+	  alert("Thank you, feel free to take a screenshot as a digital keepsake.");
+	});
+  
+	audioElement.addEventListener("volumechange", () => {
+	  console.log("Audio volume:", audioElement.volume);
+	  // IDEA: turn up volume to make brighter & inverse
+	});
+  
+	audioElement.addEventListener("error", (e) => {
+	  console.error("Audio error:", e);
+	});
+  
+	document.addEventListener("mousemove", (event) => {
+	  const width = window.innerWidth;
+	  const height = window.innerHeight;
+	  const x = event.clientX;
+	  const y = event.clientY;
+	  angle =
+		Math.atan2(y - height / 2, x - width / 2) * (180 / Math.PI) + 180;
+	});
+  
+	const texts = document.querySelectorAll("#playButton small");
+  
+	function showText(index) {
+	  texts.forEach((text, i) => {
+		text.style.display = i === index ? "block" : "none";
+	  });
+	}
+  
+	function cycleText() {
+	  showText(currentIndex);
+	  currentIndex = (currentIndex + 1) % texts.length;
+	}
+  
+	function startCycling() {
+	  intervalId = setInterval(cycleText, 4000); // Change text every 4 seconds (adjust as needed)
+	  cycleText(); // Initial call to show the first text
+	}
+  
+	function stopCycling() {
+	  clearInterval(intervalId);
+	  playButton.innerHTML = ""; // Remove all content inside playButton
+	}
+  
+	function startBreathing() {
+	  if (!playButton.classList.contains("breathing")) {
+		playButton.classList.add("breathing");
+	  } else {
+		playButton.classList.remove("breathing");
+	  }
+	}
+  
+	playButton.addEventListener("click", stopCycling);
+	playButton.addEventListener("click", startBreathing);
+  
+	startCycling(); // Start the text cycling when the page loads
+  });
+  
+    </script>
+    <!-- <script src="./script.js" defer></script> -->
   </head>
   <body>
     <div class="wrapper">
