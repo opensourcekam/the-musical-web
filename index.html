@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>The Musical Web - Creative Coding Portfolio</title>
   <!-- Open Graph Meta Tags -->
-  <meta property="og:title" content="The Musical Web – Where Code Gets Groovy 🎶" />
+  <meta property="og:title" content="The Musical Web – Where Code Gets Groovy" />
   <meta property="og:description" content="Not your average portfolio. Explore wild, interactive experiments that blend code, music, and art. Click if you dare to get inspired (or just want to see something cool)!" />
   <meta property="og:image" content="https://the-musical-web-three.vercel.app/my-mind.png" />
   <meta property="og:url" content="https://the-musical-web-three.vercel.app/" />
@@ -14,7 +14,7 @@
 
   <!-- Twitter Card Meta Tags -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="The Musical Web – Where Code Gets Groovy 🎶" />
+  <meta name="twitter:title" content="The Musical Web – Where Code Gets Groovy" />
   <meta name="twitter:description" content="Not your average portfolio. Explore wild, interactive experiments that blend code, music, and art. Click if you dare to get inspired (or just want to see something cool)!" />
   <meta name="twitter:image" content="https://the-musical-web-three.vercel.app/my-mind.png" />
   <meta name="twitter:site" content="@kamer___n" />
@@ -387,10 +387,21 @@
       color: #a6c8ff;
       text-decoration: underline;
     }
+    .feather-icon {
+      width: 1.2em;
+      height: 1.2em;
+      stroke: currentColor;
+      stroke-width: 2;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      vertical-align: middle;
+    }
   </style>
 </head>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-04VDK5DXZS"></script>
+<script src="https://unpkg.com/feather-icons"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -423,7 +434,7 @@
     
     <div class="projects">
       <div class="project">
-        <span class="project-icon">🧘‍♀️</span>
+        <span class="project-icon"><i data-feather="activity" class="feather-icon"></i></span>
         <h3>Breathing</h3>
         <p>Audio-reactive meditation experience with synchronized visuals and breathing guidance</p>
         <div class="project-links">
@@ -433,7 +444,7 @@
       </div>
       
       <div class="project">
-        <span class="project-icon">✨</span>
+        <span class="project-icon"><i data-feather="star" class="feather-icon"></i></span>
         <h3>Electric Brightness</h3>
         <p>Star field visualization with curved connecting lines and dynamic brightness analysis</p>
         <div class="project-links">
@@ -443,7 +454,7 @@
       </div>
       
       <div class="project">
-        <span class="project-icon">🎵</span>
+        <span class="project-icon"><i data-feather="music" class="feather-icon"></i></span>
         <h3>Electric Brightness Sound</h3>
         <p>Audio-reactive star field with real-time sound synthesis and frequency mapping</p>
         <div class="project-links">
@@ -453,7 +464,7 @@
       </div>
       
       <div class="project">
-        <span class="project-icon">🎨</span>
+        <span class="project-icon"><i data-feather="edit" class="feather-icon"></i></span>
         <h3>Image Scan Synth</h3>
         <p>Convert images to sound through pixel analysis and color-to-frequency mapping</p>
         <div class="project-links">
@@ -463,7 +474,7 @@
       </div>
       
       <div class="project">
-        <span class="project-icon">🌊</span>
+        <span class="project-icon"><i data-feather="droplet" class="feather-icon"></i></span>
         <h3>Rough Waters</h3>
         <p>Real-time ocean wave data visualization with live surf conditions</p>
         <div class="project-links">
@@ -473,7 +484,7 @@
       </div>
       
       <div class="project">
-        <span class="project-icon">🏄‍♂️</span>
+        <span class="project-icon"><i data-feather="zoom-in" class="feather-icon"></i></span>
         <h3>Rough Waters Audio Zoom</h3>
         <p>Interactive surf spot explorer with audio-responsive text and wave data</p>
         <div class="project-links">
@@ -483,7 +494,7 @@
       </div>
       
       <div class="project">
-        <span class="project-icon">⭐</span>
+        <span class="project-icon"><i data-feather="star" class="feather-icon"></i></span>
         <h3>Star Sounds 2D</h3>
         <p>2D audio-reactive star field with complex audio effects and particle systems</p>
         <div class="project-links">
@@ -493,7 +504,7 @@
       </div>
       
       <div class="project">
-        <span class="project-icon">🌟</span>
+        <span class="project-icon"><i data-feather="star" class="feather-icon"></i></span>
         <h3>Star Sounds 3D</h3>
         <p>Immersive 3D audio-reactive star field with intelligent camera movement</p>
         <div class="project-links">
@@ -503,7 +514,7 @@
       </div>
       
       <div class="project">
-        <span class="project-icon">📞</span>
+        <span class="project-icon"><i data-feather="phone" class="feather-icon"></i></span>
         <h3>888-forgott.radio</h3>
         <p>Interactive phone number app where you can call to hear a playlist and leave messages that get interlooped into the audio experience</p>
         <div class="project-links">
@@ -515,7 +526,7 @@
     </div>
 
     <div class="footer">
-      <p>Created with p5.js, Tone.js, and lots of creativity 🎨</p>
+      <p>Created with p5.js, Tone.js, and lots of creativity <i data-feather="edit" class="feather-icon"></i></p>
       <p>Designed by <a href="https://x.com/kamer___n" target="_blank">Kameron A. Robinson</a> in NYC with love</p>
       <div style="margin-top: 0.5rem;">
         <a href="https://x.com/kamer___n" target="_blank" style="color: #a6c8ff; text-decoration: none; margin-right: 1rem;">🐦 Twitter</a>
@@ -533,6 +544,9 @@
     }
     setInterval(updateClock, 1000);
     updateClock();
+    
+    // Initialize feather icons
+    feather.replace();
   </script>
 </body>
 </html> 
