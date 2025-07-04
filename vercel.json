@@ -4,12 +4,133 @@
     {
       "src": "server.js",
       "use": "@vercel/node"
+    },
+    {
+      "src": "**/*.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "**/*.js",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "**/*.css",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "**/*.mp3",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "**/*.aif",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "**/*.wav",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "**/*.jpeg",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "**/*.jpg",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "**/*.png",
+      "use": "@vercel/static"
     }
   ],
   "routes": [
     {
-      "src": "/(.*)",
+      "src": "/breathing",
+      "dest": "/breathing/index-p5.html"
+    },
+    {
+      "src": "/electricBrightness",
+      "dest": "/electricBrightness/index-p5.html"
+    },
+    {
+      "src": "/electricBrightnessSound",
+      "dest": "/electricBrightnessSound/index.html"
+    },
+    {
+      "src": "/imageScanSynth",
+      "dest": "/imageScanSynth/index.html"
+    },
+    {
+      "src": "/roughWaters",
+      "dest": "/roughWaters/index.html"
+    },
+    {
+      "src": "/roughWatersAudioZoom",
+      "dest": "/roughWatersAudioZoom/index.html"
+    },
+    {
+      "src": "/starsounds2d",
+      "dest": "/starsounds2d/index.html"
+    },
+    {
+      "src": "/starsounds3d",
+      "dest": "/starsounds3d/index.html"
+    },
+    {
+      "src": "/",
       "dest": "/server.js"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*).mp3",
+      "headers": [
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        },
+        {
+          "key": "Access-Control-Allow-Methods",
+          "value": "GET, OPTIONS"
+        },
+        {
+          "key": "Access-Control-Allow-Headers",
+          "value": "Content-Type"
+        }
+      ]
+    },
+    {
+      "source": "/(.*).aif",
+      "headers": [
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        },
+        {
+          "key": "Access-Control-Allow-Methods",
+          "value": "GET, OPTIONS"
+        },
+        {
+          "key": "Access-Control-Allow-Headers",
+          "value": "Content-Type"
+        }
+      ]
+    },
+    {
+      "source": "/(.*).wav",
+      "headers": [
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        },
+        {
+          "key": "Access-Control-Allow-Methods",
+          "value": "GET, OPTIONS"
+        },
+        {
+          "key": "Access-Control-Allow-Headers",
+          "value": "Content-Type"
+        }
+      ]
     }
   ]
 } 
