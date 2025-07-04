@@ -146,6 +146,31 @@
       transform: none !important;
     }
     
+    .project-links small {
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      position: absolute;
+      background: rgba(0, 0, 0, 0.9);
+      color: #fff;
+      padding: 0.5rem;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      white-space: nowrap;
+      pointer-events: none;
+      z-index: 10;
+      transform: translateY(-100%);
+      margin-top: -0.5rem;
+    }
+    
+    .project-links .disabled:hover + small,
+    .project-links .disabled:focus + small {
+      opacity: 1;
+    }
+    
+    .project-links {
+      position: relative;
+    }
+    
     .footer {
       text-align: center;
       margin-top: 4rem;
@@ -262,7 +287,8 @@
         <p>Interactive phone number app where you can call to hear a playlist and leave messages that get interlooped into the audio experience</p>
         <div class="project-links">
           <a href="https://888-forgott.radio" class="project-link" target="_blank">Visit Site</a>
-          <a href="tel:+18883674608" class="project-link readme-link disabled">📞 Call +1 888 367 4608 (sunset Febuary 2025)</a>
+          <a href="tel:+18883674608" class="project-link readme-link disabled">📞 Call +1 888 367 4608</a> 
+          <small>(sunset Febuary 2025)</small>
         </div>
       </div>
     </div>
