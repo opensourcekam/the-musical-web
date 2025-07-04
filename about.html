@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About - The Musical Web</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #000;
+      color: #fff;
+      margin: 0;
+      padding: 40px;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+    
+    .glass-nav {
+      position: fixed;
+      top: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.25);
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+      backdrop-filter: blur(12px) saturate(180%);
+      -webkit-backdrop-filter: blur(12px) saturate(180%);
+      border-radius: 2.5rem;
+      border: 1px solid rgba(255,255,255,0.18);
+      padding: 0.25rem 2rem;
+      min-width: 420px;
+      max-width: 90vw;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .glass-nav nav ul {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .nav-item {
+      display: flex;
+      align-items: center;
+      border-radius: 2rem;
+      transition: background 0.2s;
+      position: relative;
+    }
+    .nav-item a, .nav-item button {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1.1rem;
+      color: #222;
+      background: none;
+      border: none;
+      outline: none;
+      padding: 0.5rem 1.2rem;
+      border-radius: 2rem;
+      cursor: pointer;
+      font-weight: 500;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+    }
+    .nav-item.active a {
+      background: #eaeaea;
+      color: #222;
+      font-weight: 600;
+    }
+    .nav-item a:hover, .nav-item button:hover {
+      background: #f3f3f3;
+      color: #111;
+    }
+    .nav-icon {
+      font-size: 1.3rem;
+      display: flex;
+      align-items: center;
+    }
+    .nav-label {
+      margin-left: 0.2rem;
+    }
+    .nav-divider {
+      width: 1px;
+      height: 2rem;
+      background: #e0e0e0;
+      margin: 0 0.5rem;
+      border-radius: 2px;
+    }
+    .nav-moon button {
+      font-size: 1.3rem;
+      padding: 0.5rem 0.9rem;
+      background: none;
+      border: none;
+      border-radius: 2rem;
+      cursor: pointer;
+      color: #222;
+      transition: background 0.2s, color 0.2s;
+    }
+    .nav-moon button:hover {
+      background: #f3f3f3;
+      color: #111;
+    }
+    @media (max-width: 600px) {
+      .glass-nav {
+        min-width: unset;
+        max-width: 98vw;
+        padding: 0.25rem 0.5rem;
+      }
+      .nav-item a, .nav-item button {
+        font-size: 0.95rem;
+        padding: 0.4rem 0.7rem;
+      }
+      .nav-label {
+        display: none;
+      }
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .nav {
+      margin-bottom: 3rem;
+    }
+    
+    .nav a {
+      color: #fff;
+      text-decoration: none;
+      opacity: 0.7;
+      transition: opacity 0.3s ease;
+    }
+    
+    .nav a:hover {
+      opacity: 1;
+    }
+    
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4);
+      background-size: 400% 400%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: gradient 8s ease infinite;
+    }
+    
+    @keyframes gradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    
+    h2 {
+      font-size: 2rem;
+      margin: 2rem 0 1rem 0;
+      color: #4ecdc4;
+    }
+    
+    h3 {
+      font-size: 1.5rem;
+      margin: 1.5rem 0 0.5rem 0;
+      color: #45b7d1;
+    }
+    
+    p {
+      margin-bottom: 1rem;
+      opacity: 0.9;
+    }
+    
+    .bio-section {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 2rem;
+      border-radius: 15px;
+      margin-bottom: 2rem;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .course-section {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 2rem;
+      border-radius: 15px;
+      margin-bottom: 2rem;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .week-list {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .week-list li {
+      padding: 0.5rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .week-list li:last-child {
+      border-bottom: none;
+    }
+    
+    .week-number {
+      font-weight: bold;
+      color: #ff6b6b;
+    }
+    
+    .footer {
+      text-align: center;
+      margin-top: 4rem;
+      opacity: 0.6;
+      font-size: 0.9rem;
+    }
+    
+    .footer a {
+      color: #4ecdc4;
+      text-decoration: none;
+    }
+    
+    @media (max-width: 768px) {
+      body {
+        padding: 20px;
+      }
+      
+      h1 {
+        font-size: 2rem;
+      }
+      
+      h2 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="glass-nav">
+    <nav>
+      <ul>
+        <li class="nav-item"><a href="/" title="Home"><span class="nav-icon">🏠</span><span class="nav-label">Home</span></a></li>
+        <li class="nav-item active"><a href="/about.html" title="About"><span class="nav-icon">👤</span><span class="nav-label">About</span></a></li>
+        <li class="nav-item"><a href="#" title="Work"><span class="nav-icon">🗂️</span><span class="nav-label">Work</span></a></li>
+        <li class="nav-item"><a href="#" title="Blog"><span class="nav-icon">📖</span><span class="nav-label">Blog</span></a></li>
+        <li class="nav-item"><a href="#" title="Gallery"><span class="nav-icon">🖼️</span><span class="nav-label">Gallery</span></a></li>
+        <li class="nav-item nav-divider"></li>
+        <li class="nav-item nav-moon"><button title="Toggle dark mode" aria-label="Toggle dark mode">🌙</button></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="container">
+    <div class="nav">
+      <a href="/">← Back to Projects</a>
+    </div>
+    
+    <h1>About</h1>
+    
+    <div class="bio-section">
+      <h2>Kameron A. Robinson</h2>
+      <p>I am a software engineer with expertise in building functional and efficient code in React.js, Next.js, and TypeScript. My experience spans working across the stack on content delivery services for large systems while continually enhancing my backend engineering skills to deliver delightful client-side experiences.</p>
+      
+      <p>My career journey began with attending hackathons and winning competitions, leading to positions at IBM Design, Apple, Bloomberg, and Jet.com. Some notable achievements include:</p>
+      
+      <ul>
+        <li>Winning 2nd place in an Apple Store pitch competition - I presented to Apple C-suite Phil Schiller, and Apple built our idea the next year</li>
+        <li>Presenting at SXSW with IBM Design and Weather Underground as an IBM Design intern, mentored by Devin O'Brian</li>
+        <li>Launching marketing pages in my hometown of Baltimore in ColdFusion - my first gig (unpaid, but I'm proud of it)</li>
+      </ul>
+      
+      <p>I thrive on staying current with the latest technologies and trends by participating in communities, attending conferences, and creating new apps for fun. Recently, I have been diving into Generative AIs and blending music with code. I am passionate about using my skills and expertise to deliver innovative solutions and contribute to the industry's growth.</p>
+      
+      <p>My skill set includes Technical Writing, Public Speaking, Responsive Web Design, Software Development Life Cycle (SDLC), Agile development, Mobile development and Frontend engineering. I hold a Bachelor's degree in Information Systems from the University of Maryland and have pursued various certifications from Free Code Camp, Codecademy, Udemy, and Frontend Masters.</p>
+      
+      <p>I am committed to giving back to the arts and software engineering communities through mentorship, philanthropy, and community building.</p>
+      
+      <p><strong>Personal interests:</strong> Music, CrossFit, long walks, art, my dog, and photography.</p>
+    </div>
+    
+    <div class="course-section">
+      <h2>The Musical Web Course</h2>
+      <p><strong>School for Poetic Computation (SFPC)</strong> - 2024</p>
+      <p><strong>Teachers:</strong> Tommy Martinez, Chloe Alexandra Thompson</p>
+      
+      <h3>Course Description</h3>
+      <p>With so many of our listening experiences being enabled through interactive, software-based streaming platforms, it is exciting to imagine the new shapes music might take in these environments beyond the static audio formats we are familiar with. Tools for shaping sound on the web have become more standardized, giving artists a wide range of digital processes to explore generatively produced sound work.</p>
+      
+      <p>Together we defined what it means to make music in networked environments, expanding our idea of a compositional process to include interventions with code on the world wide web. We asked: how can web frameworks be used to create new models for music making, and how is our understanding of the sonic arts growing to include web and other technologies?</p>
+      
+      <h3>Course Structure (10 weeks)</h3>
+      <ul class="week-list">
+        <li><span class="week-number">Week 1:</span> New Experiments - Setting up programming environment and exploring current musical artists working with web technologies</li>
+        <li><span class="week-number">Week 2:</span> Tone Poems, Synths and Effects - Building FM/subtractive synthesizers and integrating audio effects</li>
+        <li><span class="week-number">Week 3:</span> Field Recording, Sampling and Collage - Using pre-recorded sounds and creating audio collages</li>
+        <li><span class="week-number">Week 4:</span> Compositional Strategies - Arrangements and timing using sequencing and changes</li>
+        <li><span class="week-number">Week 5:</span> Publishing - Learning to publish websites and understanding web history</li>
+        <li><span class="week-number">Week 6:</span> The Platform - Discussing music platforms and envisioning distribution methods</li>
+        <li><span class="week-number">Week 7:</span> Virtual and Web-Based Performance - Using websites as tools for live performance</li>
+        <li><span class="week-number">Week 8:</span> Beyond the Library - Writing custom audio code using AudioWorklet API</li>
+        <li><span class="week-number">Week 9:</span> Unknown Futures - Exploring Metaverse technologies, Web3, and machine learning</li>
+        <li><span class="week-number">Week 10:</span> Final Presentations - Sharing and performing musical web works</li>
+      </ul>
+      
+      <h3>Technologies Used</h3>
+      <p>p5.sound, Web Audio API, Max MSP, HTML, JavaScript, and other audio programming languages.</p>
+      
+      <p><em>No prior coding experience was necessary - just excitement to explore new sonic territory through code and art.</em></p>
+    </div>
+    
+    <div class="footer">
+      <p>Designed by <a href="https://x.com/kamer___n" target="_blank">Kameron A. Robinson</a> in NYC with love</p>
+      <div style="margin-top: 0.5rem;">
+        <a href="https://x.com/kamer___n" target="_blank" style="color: #1DA1F2; text-decoration: none; margin-right: 1rem;">🐦 Twitter</a>
+        <a href="http://instagram.com/opensourcekam/" target="_blank" style="color: #E4405F; text-decoration: none;">📸 Instagram</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html> 

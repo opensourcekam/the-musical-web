@@ -15,6 +15,109 @@
       min-height: 100vh;
     }
     
+    .glass-nav {
+      position: fixed;
+      top: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.25);
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+      backdrop-filter: blur(12px) saturate(180%);
+      -webkit-backdrop-filter: blur(12px) saturate(180%);
+      border-radius: 2.5rem;
+      border: 1px solid rgba(255,255,255,0.18);
+      padding: 0.25rem 2rem;
+      min-width: 420px;
+      max-width: 90vw;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .glass-nav nav ul {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .nav-item {
+      display: flex;
+      align-items: center;
+      border-radius: 2rem;
+      transition: background 0.2s;
+      position: relative;
+    }
+    .nav-item a, .nav-item button {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1.1rem;
+      color: #222;
+      background: none;
+      border: none;
+      outline: none;
+      padding: 0.5rem 1.2rem;
+      border-radius: 2rem;
+      cursor: pointer;
+      font-weight: 500;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+    }
+    .nav-item.active a {
+      background: #eaeaea;
+      color: #222;
+      font-weight: 600;
+    }
+    .nav-item a:hover, .nav-item button:hover {
+      background: #f3f3f3;
+      color: #111;
+    }
+    .nav-icon {
+      font-size: 1.3rem;
+      display: flex;
+      align-items: center;
+    }
+    .nav-label {
+      margin-left: 0.2rem;
+    }
+    .nav-divider {
+      width: 1px;
+      height: 2rem;
+      background: #e0e0e0;
+      margin: 0 0.5rem;
+      border-radius: 2px;
+    }
+    .nav-moon button {
+      font-size: 1.3rem;
+      padding: 0.5rem 0.9rem;
+      background: none;
+      border: none;
+      border-radius: 2rem;
+      cursor: pointer;
+      color: #222;
+      transition: background 0.2s, color 0.2s;
+    }
+    .nav-moon button:hover {
+      background: #f3f3f3;
+      color: #111;
+    }
+    @media (max-width: 600px) {
+      .glass-nav {
+        min-width: unset;
+        max-width: 98vw;
+        padding: 0.25rem 0.5rem;
+      }
+      .nav-item a, .nav-item button {
+        font-size: 0.95rem;
+        padding: 0.4rem 0.7rem;
+      }
+      .nav-label {
+        display: none;
+      }
+    }
+    
     .container {
       max-width: 1200px;
       margin: 0 auto;
@@ -194,6 +297,20 @@
   </style>
 </head>
 <body>
+  <div class="glass-nav">
+    <nav>
+      <ul>
+        <li class="nav-item active"><a href="/" title="Home"><span class="nav-icon">🏠</span><span class="nav-label">Home</span></a></li>
+        <li class="nav-item"><a href="/about.html" title="About"><span class="nav-icon">👤</span><span class="nav-label">About</span></a></li>
+        <li class="nav-item"><a href="#" title="Work"><span class="nav-icon">🗂️</span><span class="nav-label">Work</span></a></li>
+        <li class="nav-item"><a href="#" title="Blog"><span class="nav-icon">📖</span><span class="nav-label">Blog</span></a></li>
+        <li class="nav-item"><a href="#" title="Gallery"><span class="nav-icon">🖼️</span><span class="nav-label">Gallery</span></a></li>
+        <li class="nav-item nav-divider"></li>
+        <li class="nav-item nav-moon"><button title="Toggle dark mode" aria-label="Toggle dark mode">🌙</button></li>
+      </ul>
+    </nav>
+  </div>
+  
   <div class="container">
     <h1>The Musical Web</h1>
     <p class="subtitle">
