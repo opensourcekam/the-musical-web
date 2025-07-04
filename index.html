@@ -93,7 +93,7 @@
     }
     
     .project p {
-      margin: 0;
+      margin: 0 0 1rem 0;
       opacity: 0.8;
       line-height: 1.5;
     }
@@ -102,6 +102,37 @@
       font-size: 2rem;
       margin-bottom: 1rem;
       display: block;
+    }
+    
+    .project-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    
+    .project-link {
+      padding: 0.5rem 1rem;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      text-decoration: none;
+      color: #fff;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .project-link:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+    }
+    
+    .readme-link {
+      background: rgba(74, 144, 226, 0.2);
+      border-color: rgba(74, 144, 226, 0.4);
+    }
+    
+    .readme-link:hover {
+      background: rgba(74, 144, 226, 0.3);
     }
     
     .footer {
@@ -134,53 +165,85 @@
     </p>
     
     <div class="projects">
-      <a href="/breathing" class="project">
+      <div class="project">
         <span class="project-icon">🧘‍♀️</span>
         <h3>Breathing</h3>
         <p>Audio-reactive meditation experience with synchronized visuals and breathing guidance</p>
-      </a>
+        <div class="project-links">
+          <a href="/breathing" class="project-link">Launch Project</a>
+          <a href="/breathing/README.md" class="project-link readme-link">README</a>
+        </div>
+      </div>
       
-      <a href="/electricBrightness" class="project">
+      <div class="project">
         <span class="project-icon">✨</span>
         <h3>Electric Brightness</h3>
         <p>Star field visualization with curved connecting lines and dynamic brightness analysis</p>
-      </a>
+        <div class="project-links">
+          <a href="/electricBrightness" class="project-link">Launch Project</a>
+          <a href="/electricBrightness/README.md" class="project-link readme-link">README</a>
+        </div>
+      </div>
       
-      <a href="/electricBrightnessSound" class="project">
+      <div class="project">
         <span class="project-icon">🎵</span>
         <h3>Electric Brightness Sound</h3>
         <p>Audio-reactive star field with real-time sound synthesis and frequency mapping</p>
-      </a>
+        <div class="project-links">
+          <a href="/electricBrightnessSound" class="project-link">Launch Project</a>
+          <a href="/electricBrightnessSound/README.md" class="project-link readme-link">README</a>
+        </div>
+      </div>
       
-      <a href="/imageScanSynth" class="project">
+      <div class="project">
         <span class="project-icon">🎨</span>
         <h3>Image Scan Synth</h3>
         <p>Convert images to sound through pixel analysis and color-to-frequency mapping</p>
-      </a>
+        <div class="project-links">
+          <a href="/imageScanSynth" class="project-link">Launch Project</a>
+          <a href="/imageScanSynth/README.md" class="project-link readme-link">README</a>
+        </div>
+      </div>
       
-      <a href="/roughWaters" class="project">
+      <div class="project">
         <span class="project-icon">🌊</span>
         <h3>Rough Waters</h3>
         <p>Real-time ocean wave data visualization with live surf conditions</p>
-      </a>
+        <div class="project-links">
+          <a href="/roughWaters" class="project-link">Launch Project</a>
+          <a href="/roughWaters/README.md" class="project-link readme-link">README</a>
+        </div>
+      </div>
       
-      <a href="/roughWatersAudioZoom" class="project">
+      <div class="project">
         <span class="project-icon">🏄‍♂️</span>
         <h3>Rough Waters Audio Zoom</h3>
         <p>Interactive surf spot explorer with audio-responsive text and wave data</p>
-      </a>
+        <div class="project-links">
+          <a href="/roughWatersAudioZoom" class="project-link">Launch Project</a>
+          <a href="/roughWatersAudioZoom/README.md" class="project-link readme-link">README</a>
+        </div>
+      </div>
       
-      <a href="/starsounds2d" class="project">
+      <div class="project">
         <span class="project-icon">⭐</span>
         <h3>Star Sounds 2D</h3>
         <p>2D audio-reactive star field with complex audio effects and particle systems</p>
-      </a>
+        <div class="project-links">
+          <a href="/starsounds2d" class="project-link">Launch Project</a>
+          <a href="/starsounds2d/README.md" class="project-link readme-link">README</a>
+        </div>
+      </div>
       
-      <a href="/starsounds3d" class="project">
+      <div class="project">
         <span class="project-icon">🌟</span>
         <h3>Star Sounds 3D</h3>
         <p>Immersive 3D audio-reactive star field with intelligent camera movement</p>
-      </a>
+        <div class="project-links">
+          <a href="/starsounds3d" class="project-link">Launch Project</a>
+          <a href="/starsounds3d/README.md" class="project-link readme-link">README</a>
+        </div>
+      </div>
     </div>
     
     <div class="footer">
