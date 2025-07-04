@@ -13,6 +13,7 @@
       padding: 40px;
       line-height: 1.6;
       min-height: 100vh;
+      overflow-x: hidden;
     }
     
     .glass-nav {
@@ -83,6 +84,9 @@
       margin-left: 0.2rem;
       color: white;
     }
+    .nav-item.active .nav-label {
+      color: #222;
+    }
     .nav-divider {
       width: 1px;
       height: 2rem;
@@ -128,7 +132,8 @@
       position: absolute;
       top: 0;
       left: 0;
-      width: 100vw;
+      width: 100%;
+      box-sizing: border-box;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -143,6 +148,10 @@
       letter-spacing: 0.01em;
       pointer-events: auto;
       text-shadow: 0 2px 8px rgba(0,0,0,0.18);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 40vw;
     }
     .clock {
       font-variant-numeric: tabular-nums;
