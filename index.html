@@ -49,12 +49,12 @@
       left: 50%;
       transform: translateX(-50%);
       z-index: 1000;
-      background: rgba(24, 24, 24, 0.85);
-      box-shadow: 0 8px 32px 0 rgba(0,0,0,0.25);
-      backdrop-filter: blur(16px) saturate(180%);
-      -webkit-backdrop-filter: blur(16px) saturate(180%);
+      background: rgba(24, 24, 24, 0.55);
+      box-shadow: 0 8px 32px 0 rgba(0,0,0,0.25), 0 1.5px 8px 0 rgba(255,255,255,0.04) inset;
+      backdrop-filter: blur(24px) saturate(180%);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
       border-radius: 2.5rem;
-      border: 1px solid rgba(60,60,60,0.28);
+      border: 1.5px solid rgba(255,255,255,0.12);
       padding: 0.25rem 2.5rem;
       min-width: 420px;
       max-width: 90vw;
@@ -186,14 +186,23 @@
       color: #e0e0e0;
     }
     .projects {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
       gap: 2.5rem;
       margin-top: 3.5rem;
       margin-bottom: 4rem;
       width: 100%;
       background: none;
+    }
+    @media (max-width: 1200px) {
+      .projects {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 700px) {
+      .projects {
+        grid-template-columns: 1fr;
+      }
     }
     .project {
       background: #23272f;
@@ -332,6 +341,28 @@
     .footer a:hover {
       text-decoration: underline;
     }
+    .glass-link {
+      display: inline-block;
+      background: rgba(24, 24, 24, 0.55);
+      color: #f8f9fb;
+      border-radius: 2.5rem;
+      border: 1.5px solid rgba(255,255,255,0.12);
+      padding: 0.25em 1.1em 0.25em 1.1em;
+      margin-right: 0.3em;
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 1em;
+      box-shadow: 0 2px 8px 0 rgba(0,0,0,0.10), 0 1.5px 8px 0 rgba(255,255,255,0.04) inset;
+      backdrop-filter: blur(24px) saturate(180%);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
+      transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+    }
+    .glass-link:hover {
+      background: rgba(24,24,24,0.85);
+      color: #a6c8ff;
+      box-shadow: 0 4px 16px 0 rgba(0,0,0,0.18);
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
@@ -349,7 +380,9 @@
   </div>
   
   <div class="container">
-    <h1>The Musical Web</h1>
+    <h1>
+      <a href="https://x.com/kamer___n" class="glass-link" target="_blank" rel="noopener">Kam</a> is based in New York City
+    </h1>
     <p class="subtitle">
       A collection of interactive audio-visual experiments created during the 2024 SFPC "The Musical Web" course using p5.js and Tone.js. These projects are works in progress - please take your time and approach them with an open mind.
     </p>
