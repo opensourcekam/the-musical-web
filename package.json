@@ -4,8 +4,9 @@
   "description": "Creative coding portfolio with p5.js projects",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "p5-server",
     "dev": "p5-server",
+    "serve": "p5-server",
     "build": "echo 'No build step needed'",
     "vercel-build": "echo 'Vercel build complete'"
   },
