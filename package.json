@@ -1,0 +1,27 @@
+{
+  "name": "the-musical-web",
+  "version": "1.0.0",
+  "description": "Creative coding portfolio with p5.js projects",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "p5-server",
+    "build": "echo 'No build step needed'",
+    "vercel-build": "echo 'Vercel build complete'"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "p5-server": "^1.0.0",
+    "cors": "^2.8.5"
+  },
+  "devDependencies": {},
+  "keywords": [
+    "p5.js",
+    "creative-coding",
+    "audio-visual",
+    "interactive",
+    "portfolio"
+  ],
+  "author": "Your Name",
+  "license": "MIT"
+} 
