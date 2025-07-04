@@ -4,11 +4,11 @@
   "trailingSlash": false,
   "rewrites": [
     {
-      "source": "/build/:project",
+      "source": "/:project/build",
       "destination": "/:project/index-p5.html"
     },
     {
-      "source": "/build/:project/",
+      "source": "/:project/build/",
       "destination": "/:project/index-p5.html"
     }
   ],
