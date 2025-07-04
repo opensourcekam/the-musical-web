@@ -48,6 +48,10 @@
     {
       "src": "*/libraries/**",
       "use": "@vercel/static"
+    },
+    {
+      "src": "**/*",
+      "use": "@vercel/static"
     }
   ],
   "rewrites": [
