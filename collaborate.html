@@ -248,6 +248,16 @@
     .footer a:hover {
       text-decoration: underline;
     }
+    .feather-icon {
+      width: 1.2em;
+      height: 1.2em;
+      stroke: currentColor;
+      stroke-width: 2;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      vertical-align: middle;
+    }
   </style>
   <!-- Open Graph Meta Tags -->
   <meta property="og:title" content="The Musical Web – Where Code Gets Groovy" />
@@ -266,6 +276,7 @@
 </head>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-04VDK5DXZS"></script>
+<script src="https://unpkg.com/feather-icons"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -281,9 +292,9 @@
   <div class="glass-nav">
     <nav>
       <ul>
-        <li class="nav-item"><a href="/" title="Home"><span class="nav-icon">🏠</span><span class="nav-label">Home</span></a></li>
-        <li class="nav-item active"><a href="/collaborate.html" title="Subscribe"><span class="nav-icon">🤝</span><span class="nav-label">Subscribe</span></a></li>
-        <li class="nav-item"><a href="/about.html" title="About"><span class="nav-icon">👤</span><span class="nav-label">About</span></a></li>
+        <li class="nav-item"><a href="/" title="Home"><span class="nav-icon"><i data-feather="home" class="feather-icon"></i></span><span class="nav-label">Home</span></a></li>
+        <li class="nav-item active"><a href="/collaborate.html" title="Subscribe"><span class="nav-icon"><i data-feather="users" class="feather-icon"></i></span><span class="nav-label">Subscribe</span></a></li>
+        <li class="nav-item"><a href="/about.html" title="About"><span class="nav-icon"><i data-feather="user" class="feather-icon"></i></span><span class="nav-label">About</span></a></li>
       </ul>
     </nav>
   </div>
@@ -401,8 +412,8 @@
   <div class="footer">
     <p>Designed by <a href="https://x.com/kamer___n" target="_blank">Kameron A. Robinson</a> in NYC with love</p>
     <div style="margin-top: 0.5rem;">
-      <a href="https://x.com/kamer___n" target="_blank" style="color: #a6c8ff; text-decoration: none; margin-right: 1rem;">🐦 Twitter</a>
-      <a href="http://instagram.com/opensourcekam/" target="_blank" style="color: #E4405F; text-decoration: none;">📸 Instagram</a>
+              <a href="https://x.com/kamer___n" target="_blank" style="color: #a6c8ff; text-decoration: none; margin-right: 1rem;"><i data-feather="twitter" class="feather-icon"></i> Twitter</a>
+        <a href="http://instagram.com/opensourcekam/" target="_blank" style="color: #E4405F; text-decoration: none;"><i data-feather="camera" class="feather-icon"></i> Instagram</a>
     </div>
   </div>
   <script>
@@ -415,6 +426,9 @@
     }
     setInterval(updateClock, 1000);
     updateClock();
+    
+    // Initialize feather icons
+    feather.replace();
   </script>
 </body>
 </html> 
