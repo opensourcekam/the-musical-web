@@ -1,0 +1,43 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "*/index.html",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/breathing/(.*)",
+      "dest": "/breathing/index.html"
+    },
+    {
+      "src": "/electricBrightness/(.*)",
+      "dest": "/electricBrightness/index.html"
+    },
+    {
+      "src": "/electricBrightnessSound/(.*)",
+      "dest": "/electricBrightnessSound/index.html"
+    },
+    {
+      "src": "/imageScanSynth/(.*)",
+      "dest": "/imageScanSynth/index.html"
+    },
+    {
+      "src": "/roughWaters/(.*)",
+      "dest": "/roughWaters/index.html"
+    },
+    {
+      "src": "/roughWatersAudioZoom/(.*)",
+      "dest": "/roughWatersAudioZoom/index.html"
+    },
+    {
+      "src": "/starsounds2d/(.*)",
+      "dest": "/starsounds2d/index.html"
+    },
+    {
+      "src": "/starsounds3d/(.*)",
+      "dest": "/starsounds3d/index.html"
+    }
+  ]
+} 
