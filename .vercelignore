@@ -1,0 +1,32 @@
+# Don't ignore any project files - we want everything deployed
+# Only ignore development and system files
+
+# Node modules (if any)
+node_modules/
+
+# Development files
+.DS_Store
+*.log
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Git
+.git/
+.gitignore
+
+# Build artifacts (if any)
+dist/
+build/
+.next/
+
+# Temporary files
+*.tmp
+*.temp 

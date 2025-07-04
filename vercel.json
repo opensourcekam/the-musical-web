@@ -4,6 +4,50 @@
     {
       "src": "*/index.html",
       "use": "@vercel/static"
+    },
+    {
+      "src": "*/sketch.js",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "*/script.js",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "*/style.css",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "*/samples/**",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "*/audio/**",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "*.jpeg",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "*.jpg",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "*.png",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "*.mp3",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "*.aif",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "*/libraries/**",
+      "use": "@vercel/static"
     }
   ],
   "routes": [
@@ -38,6 +82,30 @@
     {
       "src": "/starsounds3d/(.*)",
       "dest": "/starsounds3d/index.html"
+    },
+    {
+      "src": "/(.*\\.(js|css|html|jpeg|jpg|png|mp3|aif|wav|ogg))",
+      "dest": "/$1"
+    }
+  ],
+  "functions": {},
+  "headers": [
+    {
+      "source": "/(.*\\.(mp3|aif|wav|ogg))",
+      "headers": [
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        },
+        {
+          "key": "Access-Control-Allow-Methods",
+          "value": "GET, OPTIONS"
+        },
+        {
+          "key": "Access-Control-Allow-Headers",
+          "value": "Content-Type"
+        }
+      ]
     }
   ]
 } 
