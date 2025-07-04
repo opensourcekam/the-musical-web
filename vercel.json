@@ -42,42 +42,42 @@
       "use": "@vercel/static"
     }
   ],
-  "routes": [
+  "rewrites": [
     {
-      "src": "/breathing",
-      "dest": "/breathing/index-p5.html"
+      "source": "/breathing",
+      "destination": "/breathing/index-p5.html"
     },
     {
-      "src": "/electricBrightness",
-      "dest": "/electricBrightness/index-p5.html"
+      "source": "/electricBrightness",
+      "destination": "/electricBrightness/index-p5.html"
     },
     {
-      "src": "/electricBrightnessSound",
-      "dest": "/electricBrightnessSound/index.html"
+      "source": "/electricBrightnessSound",
+      "destination": "/electricBrightnessSound/index.html"
     },
     {
-      "src": "/imageScanSynth",
-      "dest": "/imageScanSynth/index.html"
+      "source": "/imageScanSynth",
+      "destination": "/imageScanSynth/index.html"
     },
     {
-      "src": "/roughWaters",
-      "dest": "/roughWaters/index.html"
+      "source": "/roughWaters",
+      "destination": "/roughWaters/index.html"
     },
     {
-      "src": "/roughWatersAudioZoom",
-      "dest": "/roughWatersAudioZoom/index.html"
+      "source": "/roughWatersAudioZoom",
+      "destination": "/roughWatersAudioZoom/index.html"
     },
     {
-      "src": "/starsounds2d",
-      "dest": "/starsounds2d/index.html"
+      "source": "/starsounds2d",
+      "destination": "/starsounds2d/index.html"
     },
     {
-      "src": "/starsounds3d",
-      "dest": "/starsounds3d/index.html"
+      "source": "/starsounds3d",
+      "destination": "/starsounds3d/index.html"
     },
     {
-      "src": "/",
-      "dest": "/server.js"
+      "source": "/",
+      "destination": "/server.js"
     }
   ],
   "headers": [
