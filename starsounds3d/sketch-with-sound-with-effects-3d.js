@@ -25,7 +25,7 @@ function changeBpm() {
 }
 
 function preload() {
-    img = loadImage(_.sample(['./IMG_8153.jpeg', 'IMG_8155.jpeg', 'IMG_8155-2.jpeg']));
+    img = loadImage(_.sample(['/starsounds3d/IMG_8153.jpeg', '/starsounds3d/IMG_8155.jpeg', '/starsounds3d/IMG_8155-2.jpeg']));
 }
 
 function setup() {

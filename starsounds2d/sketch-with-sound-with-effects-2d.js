@@ -18,7 +18,7 @@ function changeBpm() {
 }
 
 function preload() {
-    img = loadImage('./IMG_8153.jpeg');
+    img = loadImage('/starsounds2d/IMG_8153.jpeg');
 }
 
 function setup() {

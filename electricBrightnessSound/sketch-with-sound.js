@@ -9,7 +9,7 @@ let gradientResolution = 0.05; // Resolution of the gradient effect
 let sampler, gainNode;
 
 function preload() {
-	img = loadImage('./IMG_8153.jpeg');
+	img = loadImage('/electricBrightnessSound/IMG_8153.jpeg');
 }
 
 function setup() {

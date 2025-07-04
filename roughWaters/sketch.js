@@ -261,7 +261,7 @@ function drawOriginalWaves() {
 }
 
 function setupAudio() {
-    audio = new Tone.Player(`audio/${surfSpot.song}`).toDestination(); // Use the selected song
+    audio = new Tone.Player(`/roughWaters/audio/${surfSpot.song}`).toDestination(); // Use the selected song
     audio.autostart = true;
 
     // Add effects
