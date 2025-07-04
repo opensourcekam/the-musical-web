@@ -354,11 +354,27 @@
       box-shadow: 0 4px 16px 0 rgba(0,0,0,0.18);
       text-decoration: underline;
     }
+    .location-link {
+      color: #fff;
+      font-weight: 700;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.18);
+      transition: color 0.2s;
+    }
+    .location-link:visited,
+    .location-link:active {
+      color: #fff;
+    }
+    .location-link:hover {
+      color: #a6c8ff;
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
   <div class="top-info">
-    <div class="location"><a href="https://x.com/kamer___n" target="_blank" rel="noopener">Kam</a> is based in New York City</div>
+    <div class="location"><a href="https://x.com/kamer___n" class="location-link" target="_blank" rel="noopener">Kam</a> is based in New York City</div>
     <div class="clock" id="clock"></div>
   </div>
   <div class="glass-nav">
