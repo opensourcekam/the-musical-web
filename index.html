@@ -135,6 +135,17 @@
       background: rgba(74, 144, 226, 0.3);
     }
     
+    .disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+    
+    .disabled:hover {
+      background: rgba(255, 255, 255, 0.1) !important;
+      transform: none !important;
+    }
+    
     .footer {
       text-align: center;
       margin-top: 4rem;
@@ -159,7 +170,7 @@
 </head>
 <body>
   <div class="container">
-    <h1>The Musical Web desiged by Kameron Robinson</h1>
+    <h1>The Musical Web</h1>
     <p class="subtitle">
       A collection of interactive audio-visual experiments created during the 2024 SFPC "The Musical Web" course using p5.js and Tone.js. These projects are works in progress - please take your time and approach them with an open mind.
     </p>
@@ -244,10 +255,25 @@
           <a href="/starsounds3d/README.md" class="project-link readme-link">README</a>
         </div>
       </div>
+      
+      <div class="project">
+        <span class="project-icon">📞</span>
+        <h3>888-forgott.radio</h3>
+        <p>Interactive phone number app where you can call to hear a playlist and leave messages that get interlooped into the audio experience</p>
+        <div class="project-links">
+          <a href="https://888-forgott.radio" class="project-link" target="_blank">Visit Site</a>
+          <a href="tel:+18883674608" class="project-link readme-link disabled">📞 Call +1 888 367 4608 (sunset Febuary 2025)</a>
+        </div>
+      </div>
     </div>
     
     <div class="footer">
       <p>Created with p5.js, Tone.js, and lots of creativity 🎨</p>
+      <p>Designed by <a href="https://x.com/kamer___n" target="_blank" style="color: #1DA1F2; text-decoration: none;">Kameron A. Robinson</a> in NYC with love</p>
+      <div style="margin-top: 0.5rem;">
+        <a href="https://x.com/kamer___n" target="_blank" style="color: #1DA1F2; text-decoration: none; margin-right: 1rem;">🐦 Twitter</a>
+        <a href="http://instagram.com/opensourcekam/" target="_blank" style="color: #E4405F; text-decoration: none;">📸 Instagram</a>
+      </div>
     </div>
   </div>
 </body>
