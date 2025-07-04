@@ -34,12 +34,12 @@ function preload() {
 	img = loadImage(
 		_.sample(
 			[
-				'./111.jpeg',
-				'./IMG_7997.jpeg',
-				'./IMG_8064.jpeg',
-				'./IMG_8062.jpeg',
-				'./IMG_7727.jpeg',
-				'./IMG_8067.jpeg',
+				'/imageScanSynth/111.jpeg',
+				'/imageScanSynth/IMG_7997.jpeg',
+				'/imageScanSynth/IMG_8064.jpeg',
+				'/imageScanSynth/IMG_8062.jpeg',
+				'/imageScanSynth/IMG_7727.jpeg',
+				'/imageScanSynth/IMG_8067.jpeg',
 			]
 		)
 	); // Ensure the path to your image is correct

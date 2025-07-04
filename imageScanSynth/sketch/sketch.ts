@@ -28,7 +28,7 @@ function preload(p: p5) {
       'IMG_8067.jpeg',
     ]
   )
-  img = p.loadImage(`../${imageName}`); // Ensure the path to your image is correct
+  img = p.loadImage(`/imageScanSynth/${imageName}`); // Ensure the path to your image is correct
 }
 
 function setup(p: p5) {
