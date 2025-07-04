@@ -10,11 +10,10 @@
     "vercel-build": "echo 'Vercel build complete'"
   },
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.18.2",
-    "p5-server": "^1.0.0",
-    "cors": "^2.8.5"
+    "p5-server": "^0.9.2"
   },
-  "devDependencies": {},
   "keywords": [
     "p5.js",
     "creative-coding",
@@ -24,4 +23,4 @@
   ],
   "author": "Your Name",
   "license": "MIT"
-} 
+}
