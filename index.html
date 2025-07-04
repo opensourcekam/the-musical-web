@@ -6,29 +6,56 @@
   <title>The Musical Web - Creative Coding Portfolio</title>
   <style>
     body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: #000;
-      color: #fff;
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #f8f9fb;
+      color: #181818;
       margin: 0;
-      padding: 40px;
-      line-height: 1.6;
+      padding: 0;
+      line-height: 1.7;
       min-height: 100vh;
       overflow-x: hidden;
     }
     
+    .top-info {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      box-sizing: border-box;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 2.2rem 3.5rem 0.5rem 3.5rem;
+      pointer-events: none;
+      z-index: 2000;
+      font-size: 1.1rem;
+      color: #222;
+    }
+    .location, .clock {
+      color: #222;
+      font-size: 1.1rem;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      pointer-events: auto;
+      text-shadow: none;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 40vw;
+    }
     .glass-nav {
       position: fixed;
-      top: 32px;
+      top: 48px;
       left: 50%;
       transform: translateX(-50%);
       z-index: 1000;
-      background: rgba(255, 255, 255, 0.25);
-      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
-      backdrop-filter: blur(12px) saturate(180%);
-      -webkit-backdrop-filter: blur(12px) saturate(180%);
+      background: rgba(255, 255, 255, 0.7);
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.10);
+      backdrop-filter: blur(16px) saturate(180%);
+      -webkit-backdrop-filter: blur(16px) saturate(180%);
       border-radius: 2.5rem;
-      border: 1px solid rgba(255,255,255,0.18);
-      padding: 0.25rem 2rem;
+      border: 1px solid rgba(200,200,200,0.18);
+      padding: 0.25rem 2.5rem;
       min-width: 420px;
       max-width: 90vw;
       display: flex;
@@ -54,38 +81,38 @@
       display: flex;
       align-items: center;
       gap: 0.5rem;
-      font-size: 1.1rem;
+      font-size: 1.15rem;
       color: #222;
       background: none;
       border: none;
       outline: none;
-      padding: 0.5rem 1.2rem;
+      padding: 0.7rem 1.5rem;
       border-radius: 2rem;
       cursor: pointer;
       font-weight: 500;
       text-decoration: none;
       transition: background 0.2s, color 0.2s;
     }
-    .nav-item.active a {
-      background: #eaeaea;
+    .nav-label {
+      margin-left: 0.2rem;
       color: #222;
+    }
+    .nav-item.active .nav-label {
+      color: #fff;
+    }
+    .nav-item.active a {
+      background: #222;
+      color: #fff;
       font-weight: 600;
     }
     .nav-item a:hover, .nav-item button:hover {
-      background: #f3f3f3;
-      color: #111;
+      background: #eaeaea;
+      color: #222;
     }
     .nav-icon {
-      font-size: 1.3rem;
+      font-size: 1.35rem;
       display: flex;
       align-items: center;
-    }
-    .nav-label {
-      margin-left: 0.2rem;
-      color: white;
-    }
-    .nav-item.active .nav-label {
-      color: #222;
     }
     .nav-divider {
       width: 1px;
@@ -105,7 +132,7 @@
       transition: background 0.2s, color 0.2s;
     }
     .nav-moon button:hover {
-      background: #f3f3f3;
+      background: #eaeaea;
       color: #111;
     }
     @media (max-width: 600px) {
@@ -121,42 +148,6 @@
       .nav-label {
         display: none;
       }
-    }
-    
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    
-    .top-info {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      box-sizing: border-box;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1.2rem 2.5rem 0.5rem 2.5rem;
-      pointer-events: none;
-      z-index: 2000;
-    }
-    .location, .clock {
-      color: #fff;
-      font-size: 1.1rem;
-      font-weight: 500;
-      letter-spacing: 0.01em;
-      pointer-events: auto;
-      text-shadow: 0 2px 8px rgba(0,0,0,0.18);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      max-width: 40vw;
-    }
-    .clock {
-      font-variant-numeric: tabular-nums;
-    }
-    @media (max-width: 600px) {
       .top-info {
         padding: 0.7rem 0.7rem 0.2rem 0.7rem;
       }
@@ -164,51 +155,58 @@
         font-size: 0.95rem;
       }
     }
-    
+    .container {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
     h1 {
-      font-size: 4rem;
-      margin-bottom: 1rem;
+      font-size: 3.5rem;
+      margin-top: 6.5rem;
+      margin-bottom: 1.5rem;
       text-align: center;
-      background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4);
-      background-size: 400% 400%;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      animation: gradient 8s ease infinite;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: #181818;
     }
-    
-    @keyframes gradient {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-    
     .subtitle {
       text-align: center;
-      font-size: 1.3rem;
+      font-size: 1.35rem;
       opacity: 0.8;
-      margin-bottom: 3rem;
+      margin-bottom: 3.5rem;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
     }
-    
     .projects {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-      gap: 2rem;
-      margin-top: 3rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2.5rem;
+      margin-top: 3.5rem;
+      margin-bottom: 4rem;
+      width: 100%;
     }
-    
     .project {
-      background: rgba(255, 255, 255, 0.05);
-      padding: 2rem;
-      border-radius: 15px;
+      background: #fff;
+      padding: 2.5rem 2rem 2rem 2rem;
+      border-radius: 18px;
       text-decoration: none;
-      color: #fff;
-      transition: all 0.3s ease;
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #181818;
+      transition: all 0.3s cubic-bezier(.4,2,.3,1);
+      border: 1px solid #ececec;
       position: relative;
       overflow: hidden;
+      min-width: 320px;
+      max-width: 370px;
+      box-shadow: 0 2px 16px 0 rgba(31,38,135,0.04);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
     }
-    
     .project::before {
       content: '';
       position: absolute;
@@ -219,81 +217,76 @@
       background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
       transition: left 0.5s;
     }
-    
     .project:hover::before {
       left: 100%;
     }
-    
     .project:hover {
-      background: rgba(255, 255, 255, 0.1);
-      transform: translateY(-5px);
-      border-color: rgba(255, 255, 255, 0.3);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      background: #f8f9fb;
+      transform: translateY(-5px) scale(1.03);
+      border-color: #e0e0e0;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
     }
-    
     .project h3 {
-      margin: 0 0 1rem 0;
-      font-size: 1.5rem;
-      font-weight: 600;
+      margin: 0 0 1.2rem 0;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #181818;
     }
-    
     .project p {
-      margin: 0 0 1rem 0;
-      opacity: 0.8;
+      margin: 0 0 1.2rem 0;
+      opacity: 0.85;
       line-height: 1.5;
+      font-size: 1.08rem;
     }
-    
     .project-icon {
-      font-size: 2rem;
-      margin-bottom: 1rem;
+      font-size: 2.2rem;
+      margin-bottom: 1.2rem;
       display: block;
     }
-    
     .project-links {
       display: flex;
       gap: 1rem;
-      margin-top: 1rem;
+      margin-top: 1.2rem;
     }
-    
     .project-link {
-      padding: 0.5rem 1rem;
-      background: rgba(255, 255, 255, 0.1);
+      padding: 0.6rem 1.2rem;
+      background: #f8f9fb;
       border-radius: 8px;
       text-decoration: none;
-      color: #fff;
-      font-size: 0.9rem;
-      transition: all 0.3s ease;
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #181818;
+      font-size: 1rem;
+      transition: all 0.2s;
+      border: 1px solid #e0e0e0;
+      font-weight: 500;
     }
-    
     .project-link:hover {
-      background: rgba(255, 255, 255, 0.2);
+      background: #eaeaea;
+      color: #181818;
+      border-color: #d0d0d0;
       transform: translateY(-2px);
     }
-    
     .readme-link {
-      background: rgba(74, 144, 226, 0.2);
-      border-color: rgba(74, 144, 226, 0.4);
+      background: #eaf3ff;
+      border-color: #b6d4fe;
+      color: #1a4b7a;
     }
-    
     .readme-link:hover {
-      background: rgba(74, 144, 226, 0.3);
+      background: #d6eaff;
+      color: #1a4b7a;
     }
-    
     .disabled {
       opacity: 0.5;
       cursor: not-allowed;
       pointer-events: none;
     }
-    
     .disabled:hover {
-      background: rgba(255, 255, 255, 0.1) !important;
+      background: #f8f9fb !important;
       transform: none !important;
     }
-    
     .project-links small {
       opacity: 0;
       transition: opacity 0.3s ease;
+      margin-left: 0.5rem;
       position: absolute;
       background: rgba(0, 0, 0, 0.9);
       color: #fff;
@@ -305,36 +298,32 @@
       z-index: 10;
       transform: translateY(-100%);
       margin-top: -0.5rem;
+      left: 50%;
+      transform: translate(-50%, -100%);
     }
-    
     .project-links .disabled:hover + small,
     .project-links .disabled:focus + small {
       opacity: 1;
     }
-    
-    .project-links {
-      position: relative;
-    }
-    
     .footer {
       text-align: center;
-      margin-top: 4rem;
-      opacity: 0.6;
-      font-size: 0.9rem;
+      margin-top: 5rem;
+      opacity: 0.7;
+      font-size: 1.05rem;
+      color: #888;
+      border-top: 1px solid #ececec;
+      padding-top: 2.5rem;
+      padding-bottom: 2.5rem;
+      width: 100%;
+      background: none;
     }
-    
-    @media (max-width: 768px) {
-      body {
-        padding: 20px;
-      }
-      
-      h1 {
-        font-size: 2.5rem;
-      }
-      
-      .projects {
-        grid-template-columns: 1fr;
-      }
+    .footer a {
+      color: #1a4b7a;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .footer a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
