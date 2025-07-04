@@ -29,7 +29,7 @@ function setup() {
   findBrightestPixels();
   
   // Add link to sound version
-  let soundLink = createA('/electricBrightnessSound/', 'see with sounds', '_parent');
+  let soundLink = createA('/build/electricBrightnessSound', 'see with sounds', '_parent');
   soundLink.class('link');
   soundLink.position(width + 20, height - 40);
 }
