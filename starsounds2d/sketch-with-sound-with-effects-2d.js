@@ -66,7 +66,7 @@ function findBrightestPixels() {
 function setupAudioNodes() {
     sampler = new Tone.Sampler({
         urls: { "A3": "72261-Tribal_percussion_melodic_twinkle-BLASTWAVEFX-06983.mp3", "B3": "8412-koto-c3.mp3", "G4": "22647-swell-rise-91.mp3", "G3": "462084-ambience-sci-fi-choir_voice_drone.mp3" },
-        attack: 0.1, decay: 0.2, sustain: 0.9, release: 0.2, baseUrl: "./samples/",
+        attack: 0.1, decay: 0.2, sustain: 0.9, release: 0.2, baseUrl: "/starsounds2d/samples/",
         onload: () => console.log('Sampler loaded')
     });
 
