@@ -50,42 +50,70 @@
       "use": "@vercel/static"
     }
   ],
-  "routes": [
+  "rewrites": [
     {
-      "src": "/breathing/(.*)",
-      "dest": "/breathing/index.html"
+      "source": "/breathing",
+      "destination": "/breathing/index.html"
     },
     {
-      "src": "/electricBrightness/(.*)",
-      "dest": "/electricBrightness/index.html"
+      "source": "/breathing/(.*)",
+      "destination": "/breathing/index.html"
     },
     {
-      "src": "/electricBrightnessSound/(.*)",
-      "dest": "/electricBrightnessSound/index.html"
+      "source": "/electricBrightness",
+      "destination": "/electricBrightness/index.html"
     },
     {
-      "src": "/imageScanSynth/(.*)",
-      "dest": "/imageScanSynth/index.html"
+      "source": "/electricBrightness/(.*)",
+      "destination": "/electricBrightness/index.html"
     },
     {
-      "src": "/roughWaters/(.*)",
-      "dest": "/roughWaters/index.html"
+      "source": "/electricBrightnessSound",
+      "destination": "/electricBrightnessSound/index.html"
     },
     {
-      "src": "/roughWatersAudioZoom/(.*)",
-      "dest": "/roughWatersAudioZoom/index.html"
+      "source": "/electricBrightnessSound/(.*)",
+      "destination": "/electricBrightnessSound/index.html"
     },
     {
-      "src": "/starsounds2d/(.*)",
-      "dest": "/starsounds2d/index.html"
+      "source": "/imageScanSynth",
+      "destination": "/imageScanSynth/index.html"
     },
     {
-      "src": "/starsounds3d/(.*)",
-      "dest": "/starsounds3d/index.html"
+      "source": "/imageScanSynth/(.*)",
+      "destination": "/imageScanSynth/index.html"
     },
     {
-      "src": "/(.*\\.(js|css|html|jpeg|jpg|png|mp3|aif|wav|ogg))",
-      "dest": "/$1"
+      "source": "/roughWaters",
+      "destination": "/roughWaters/index.html"
+    },
+    {
+      "source": "/roughWaters/(.*)",
+      "destination": "/roughWaters/index.html"
+    },
+    {
+      "source": "/roughWatersAudioZoom",
+      "destination": "/roughWatersAudioZoom/index.html"
+    },
+    {
+      "source": "/roughWatersAudioZoom/(.*)",
+      "destination": "/roughWatersAudioZoom/index.html"
+    },
+    {
+      "source": "/starsounds2d",
+      "destination": "/starsounds2d/index.html"
+    },
+    {
+      "source": "/starsounds2d/(.*)",
+      "destination": "/starsounds2d/index.html"
+    },
+    {
+      "source": "/starsounds3d",
+      "destination": "/starsounds3d/index.html"
+    },
+    {
+      "source": "/starsounds3d/(.*)",
+      "destination": "/starsounds3d/index.html"
     }
   ],
   "headers": [
