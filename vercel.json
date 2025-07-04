@@ -2,6 +2,16 @@
   "version": 2,
   "cleanUrls": true,
   "trailingSlash": false,
+  "rewrites": [
+    {
+      "source": "/build/:project",
+      "destination": "/:project/index-p5.html"
+    },
+    {
+      "source": "/build/:project/",
+      "destination": "/:project/index-p5.html"
+    }
+  ],
   "headers": [
     {
       "source": "/(.*).mp3",
