@@ -7,7 +7,7 @@ let strokeWeightValue = 0.4; // Stroke weight for the lines
 let gradientResolution = 0.01; // Resolution of the gradient effect
 
 function preload() {
-	img = loadImage('./IMG_8153.jpeg');
+	img = loadImage('/electricBrightness/IMG_8153.jpeg');
 }
 
 function setup() {
