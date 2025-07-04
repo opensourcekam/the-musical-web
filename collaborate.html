@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Collaborate – Kam Robinson</title>
+  <style>
+    body {
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #181818;
+      color: #f8f9fb;
+      margin: 0;
+      padding: 0;
+      line-height: 1.7;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    .top-info {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      box-sizing: border-box;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 2.2rem 3.5rem 0.5rem 3.5rem;
+      pointer-events: none;
+      z-index: 2000;
+      font-size: 1.1rem;
+      color: #f8f9fb;
+    }
+    .location, .clock {
+    color: #f8f9fb;
+      font-size: 1.1rem;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      pointer-events: auto;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.18);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 40vw;
+    }
+    .location-link {
+      color: #fff;
+      font-weight: 700;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.18);
+      transition: color 0.2s;
+    }
+    .location-link:visited,
+    .location-link:active {
+      color: #fff;
+    }
+    .location-link:hover {
+      color: #a6c8ff;
+      text-decoration: underline;
+    }
+    .glass-nav {
+      position: fixed;
+      top: 48px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1000;
+      background: rgba(24, 24, 24, 0.55);
+      box-shadow: 0 8px 32px 0 rgba(0,0,0,0.25), 0 1.5px 8px 0 rgba(255,255,255,0.04) inset;
+      backdrop-filter: blur(24px) saturate(180%);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
+      border-radius: 2.5rem;
+      border: 1.5px solid rgba(255,255,255,0.12);
+      padding: 0.25rem 2.5rem;
+      min-width: 420px;
+      max-width: 90vw;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .glass-nav nav ul {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .nav-item {
+      display: flex;
+      align-items: center;
+      border-radius: 2rem;
+      transition: background 0.2s;
+      position: relative;
+    }
+    .nav-item a, .nav-item button {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1.15rem;
+      color: #f8f9fb;
+      background: none;
+      border: none;
+      outline: none;
+      padding: 0.7rem 1.5rem;
+      border-radius: 2rem;
+      cursor: pointer;
+      font-weight: 500;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+    }
+    .nav-label {
+      margin-left: 0.2rem;
+      color: #f8f9fb;
+    }
+    .nav-item.active .nav-label {
+      color: #181818;
+    }
+    .nav-item.active a {
+      background: #f8f9fb;
+      color: #181818;
+      font-weight: 600;
+    }
+    .nav-item a:hover, .nav-item button:hover {
+      background: #23272f;
+      color: #fff;
+    }
+    .nav-divider {
+      width: 1px;
+      height: 2rem;
+      background: #333;
+      margin: 0 0.5rem;
+      border-radius: 2px;
+    }
+    .nav-moon button {
+      color: #f8f9fb;
+    }
+    .nav-moon button:hover {
+      background: #23272f;
+      color: #fff;
+    }
+    @media (max-width: 600px) {
+      .glass-nav {
+        min-width: unset;
+        max-width: 98vw;
+        padding: 0.25rem 0.5rem;
+      }
+      .nav-item a, .nav-item button {
+        font-size: 0.95rem;
+        padding: 0.4rem 0.7rem;
+      }
+      .nav-label {
+        display: none;
+      }
+      .top-info {
+        padding: 0.7rem 0.7rem 0.2rem 0.7rem;
+      }
+      .location, .clock {
+        font-size: 0.95rem;
+      }
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .headline {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-top: 7.5rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+      letter-spacing: -0.02em;
+      color: #f8f9fb;
+    }
+    .section {
+      background: #23272f;
+      border-radius: 18px;
+      border: 1px solid #333;
+      box-shadow: 0 2px 16px 0 rgba(0,0,0,0.12);
+      padding: 2.2rem 2rem 2rem 2rem;
+      margin-bottom: 2.5rem;
+      width: 100%;
+      color: #f8f9fb;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .section-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #a6c8ff;
+      margin-bottom: 1.1rem;
+      margin-top: 0;
+      letter-spacing: 0.01em;
+    }
+    .section ul, .section ol {
+      margin: 0 0 1.2rem 1.2rem;
+      padding: 0;
+    }
+    .section li {
+      margin-bottom: 0.7rem;
+      font-size: 1.08rem;
+      line-height: 1.6;
+    }
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: #333;
+      margin: 2.5rem 0 2.5rem 0;
+      border-radius: 2px;
+      opacity: 0.7;
+    }
+    .qualities {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem 2.5rem;
+      margin-bottom: 1.5rem;
+      margin-top: 0.5rem;
+    }
+    .quality {
+      font-size: 1.08rem;
+      background: #181818;
+      border-radius: 8px;
+      padding: 0.5rem 1.2rem;
+      border: 1px solid #333;
+      color: #a6c8ff;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      box-shadow: 0 1px 4px 0 rgba(0,0,0,0.08);
+    }
+    .footer {
+      text-align: center;
+      margin-top: 5rem;
+      opacity: 0.7;
+      font-size: 1.05rem;
+      color: #888;
+      border-top: 1px solid #333;
+      padding-top: 2.5rem;
+      padding-bottom: 2.5rem;
+      width: 100%;
+      background: none;
+    }
+    .footer a {
+      color: #a6c8ff;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="top-info">
+    <div class="location"><a href="https://x.com/kamer___n" class="location-link" target="_blank" rel="noopener">Kam</a> is based in New York City</div>
+    <div class="clock" id="clock"></div>
+  </div>
+  <div class="glass-nav">
+    <nav>
+      <ul>
+        <li class="nav-item"><a href="/" title="Home"><span class="nav-icon">🏠</span><span class="nav-label">Home</span></a></li>
+        <li class="nav-item"><a href="/about.html" title="About"><span class="nav-icon">👤</span><span class="nav-label">About</span></a></li>
+        <li class="nav-item active"><a href="/collaborate.html" title="Collaborate"><span class="nav-icon">🤝</span><span class="nav-label">Collaborate</span></a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="container">
+    <div class="headline">Creative Engineer & Artist-Centric Technologist</div>
+    <div class="section">
+      <div class="section-title">What is Creative Engineering?</div>
+      <p>Creative engineering blends technical engineering skills with design, art, and user experience to produce products that are functional, aesthetic, and human-centered. It is ideal for those who:</p>
+      <ul>
+        <li>Think visually and systematically</li>
+        <li>Enjoy building products people touch and feel</li>
+        <li>Thrive on prototype-to-production workflows</li>
+        <li>Want to merge artistic sensibility with technical excellence</li>
+      </ul>
+    </div>
+    <div class="divider"></div>
+    <div class="section">
+      <div class="section-title">My Relevant Strengths</div>
+      <ul>
+        <li>Strong front-end, mobile, and full-stack engineering (React, Flutter, Next.js)</li>
+        <li>Deep interest in architecture, visual arts, and user experience</li>
+        <li>Experience with AI prototyping, creative tooling, and UI-heavy applications</li>
+        <li>Photographer/artist with aesthetic taste, comfortable with iterative design</li>
+        <li>Startup experience, thriving in 0 → 1 product environments</li>
+      </ul>
+    </div>
+    <div class="divider"></div>
+    <div class="section">
+      <div class="section-title">Ideal Job Types in Creative Engineering</div>
+      <ol>
+        <li><strong>Frontend/Interaction Engineer at Design-Driven Companies</strong><br>
+          <ul>
+            <li>Build polished, delightful UI/UX for consumer apps or creative tools.</li>
+            <li>Work closely with designers to bring interactive experiences to life.</li>
+            <li>Focus on performance, animation, and usability.</li>
+            <li>Example: Frontend Engineer at Figma, Adobe, or boutique design studios building creative SaaS tools.</li>
+          </ul>
+        </li>
+        <li><strong>Creative Technologist</strong><br>
+          <ul>
+            <li>Prototype and ship interactive, visually compelling products.</li>
+            <li>Use emerging tech (AI, WebGL, AR/VR, canvas) to build novel interfaces.</li>
+            <li>Often sits between engineering and design teams.</li>
+            <li>Example: Creative Technologist at a digital agency, museum, or an innovation lab.</li>
+          </ul>
+        </li>
+        <li><strong>Prototyping Engineer (Rapid Product Development)</strong><br>
+          <ul>
+            <li>Take early product ideas and turn them into interactive prototypes.</li>
+            <li>Focus on experimentation, speed, and user testing.</li>
+            <li>Ideal in small startups, labs, or R&D teams.</li>
+            <li>Example: Early-stage startup engineer for an AI tool, or at Google Creative Lab.</li>
+          </ul>
+        </li>
+        <li><strong>Mobile Product Engineer (Design-Heavy)</strong><br>
+          <ul>
+            <li>Build mobile apps with exceptional design and animations.</li>
+            <li>Craft art-centric or photography-related apps.</li>
+            <li>Example: Engineer for VSCO, Halide, or wellness/meditation apps with premium design.</li>
+          </ul>
+        </li>
+        <li><strong>Developer Advocate / Design Engineer</strong><br>
+          <ul>
+            <li>Build and document creative coding tools for other developers.</li>
+            <li>Create demo apps, technical documentation, and showcase the capabilities of SDKs.</li>
+            <li>Example: Developer Relations Engineer for graphics libraries, AR/VR SDKs, or design frameworks.</li>
+          </ul>
+        </li>
+        <li><strong>Computational Designer</strong><br>
+          <ul>
+            <li>Use programmatic methods to generate art, design, or architecture outputs.</li>
+            <li>Work on generative design systems, creative coding, and interactive installations.</li>
+            <li>Example: Work with architecture firms, design studios, or generative art platforms.</li>
+          </ul>
+        </li>
+        <li><strong>Product Engineer for Artistic/Creative Platforms</strong><br>
+          <ul>
+            <li>Build tooling for artists, photographers, or creators (e.g., marketplaces, creative collaboration tools).</li>
+            <li>Your understanding of artistic workflows will directly improve user experience.</li>
+            <li>Example: Building a platform like Are.na, Artsy, or an artist residency management platform.</li>
+          </ul>
+        </li>
+      </ol>
+    </div>
+    <div class="divider"></div>
+    <div class="section">
+      <div class="section-title">Core Qualities I Bring</div>
+      <div class="qualities">
+        <div class="quality">✅ Strong sense of aesthetics and user-centric design</div>
+        <div class="quality">✅ Ability to ship and iterate quickly</div>
+        <div class="quality">✅ Comfort with code + design intersection</div>
+        <div class="quality">✅ Deep curiosity in emerging creative technologies</div>
+        <div class="quality">✅ Practical understanding of artist and user workflows</div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div class="section" style="align-items:center;text-align:center;">
+      <div class="section-title" style="color:#fff;font-size:1.5rem;">Let's Build Something Beautiful Together</div>
+      <p style="font-size:1.2rem;max-width:600px;margin:0 auto 1.5rem auto;">I build human-centered, design-forward products that merge engineering and art, specializing in interactive, visually compelling interfaces for creative tools and consumer apps.</p>
+      <a href="mailto:hello@kameronrobinson.com" style="display:inline-block;background:rgba(24,24,24,0.55);color:#a6c8ff;font-weight:700;padding:0.8em 2.2em;border-radius:2.5rem;border:1.5px solid rgba(255,255,255,0.12);box-shadow:0 2px 8px 0 rgba(0,0,0,0.10),0 1.5px 8px 0 rgba(255,255,255,0.04) inset;text-decoration:none;font-size:1.15rem;backdrop-filter:blur(24px) saturate(180%);-webkit-backdrop-filter:blur(24px) saturate(180%);transition:background 0.2s,color 0.2s,box-shadow 0.2s;margin-top:1.2rem;">Contact Kam</a>
+    </div>
+  </div>
+  <div class="footer">
+    <p>Designed by <a href="https://x.com/kamer___n" target="_blank">Kameron A. Robinson</a> in NYC with love</p>
+    <div style="margin-top: 0.5rem;">
+      <a href="https://x.com/kamer___n" target="_blank" style="color: #a6c8ff; text-decoration: none; margin-right: 1rem;">🐦 Twitter</a>
+      <a href="http://instagram.com/opensourcekam/" target="_blank" style="color: #E4405F; text-decoration: none;">📸 Instagram</a>
+    </div>
+  </div>
+  <script>
+    function updateClock() {
+      const now = new Date();
+      const hours = now.getHours().toString().padStart(2, '0');
+      const minutes = now.getMinutes().toString().padStart(2, '0');
+      const seconds = now.getSeconds().toString().padStart(2, '0');
+      document.getElementById('clock').textContent = `${hours}:${minutes}:${seconds}`;
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+  </script>
+</body>
+</html> 
