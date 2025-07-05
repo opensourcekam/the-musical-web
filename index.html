@@ -18,129 +18,10 @@
   <meta name="twitter:description" content="Not your average portfolio. Explore wild, interactive experiments that blend code, music, and art. Click if you dare to get inspired (or just want to see something cool)!" />
   <meta name="twitter:image" content="https://the-musical-web-three.vercel.app/my-mind.png" />
   <meta name="twitter:site" content="@kamer___n" />
+  <link rel="stylesheet" href="/libraries/glassmorphic.css">
   <style>
-    @font-face {
-      font-family: 'IvyEpic';
-      src: url('/fonts/IvyEpic_Variable_Thin.otf') format('opentype');
-      font-weight: 100;
-      font-style: normal;
-    }
-    @font-face {
-      font-family: 'IvyEpic';
-      src: url('/fonts/IvyEpic_ExtraLight.otf') format('opentype');
-      font-weight: 200;
-      font-style: normal;
-    }
-    @font-face {
-      font-family: 'IvyEpic';
-      src: url('/fonts/IvyEpic_Light.otf') format('opentype');
-      font-weight: 300;
-      font-style: normal;
-    }
-    @font-face {
-      font-family: 'IvyEpic';
-      src: url('/fonts/IvyEpic_Regular.otf') format('opentype');
-      font-weight: 400;
-      font-style: normal;
-    }
-    @font-face {
-      font-family: 'IvyEpic';
-      src: url('/fonts/IvyEpic_Medium.otf') format('opentype');
-      font-weight: 500;
-      font-style: normal;
-    }
-    @font-face {
-      font-family: 'IvyEpic';
-      src: url('/fonts/IvyEpic_SemiBold.otf') format('opentype');
-      font-weight: 600;
-      font-style: normal;
-    }
-    @font-face {
-      font-family: 'IvyEpic';
-      src: url('/fonts/IvyEpic_Bold.otf') format('opentype');
-      font-weight: 700;
-      font-style: normal;
-    }
-    @font-face {
-      font-family: 'IvyEpic';
-      src: url('/fonts/IvyEpic_ExtraBold.otf') format('opentype');
-      font-weight: 800;
-      font-style: normal;
-    }
-    @font-face {
-      font-family: 'IvyEpic';
-      src: url('/fonts/IvyEpic_Black.otf') format('opentype');
-      font-weight: 900;
-      font-style: normal;
-    }
-    @font-face {
-      font-family: 'IvyEpic';
-      src: url('/fonts/IvyEpic_Thin_Italic.otf') format('opentype');
-      font-weight: 100;
-      font-style: italic;
-    }
-    @font-face {
-      font-family: 'IvyEpic';
-      src: url('/fonts/IvyEpic_ExtraLight_Italic.otf') format('opentype');
-      font-weight: 200;
-      font-style: italic;
-    }
-    @font-face {
-      font-family: 'IvyEpic';
-      src: url('/fonts/IvyEpic_Light_Italic.otf') format('opentype');
-      font-weight: 300;
-      font-style: italic;
-    }
-    @font-face {
-      font-family: 'IvyEpic';
-      src: url('/fonts/IvyEpic_Italic.otf') format('opentype');
-      font-weight: 400;
-      font-style: italic;
-    }
-    @font-face {
-      font-family: 'IvyEpic';
-      src: url('/fonts/IvyEpic_Medium_Italic.otf') format('opentype');
-      font-weight: 500;
-      font-style: italic;
-    }
-    @font-face {
-      font-family: 'IvyEpic';
-      src: url('/fonts/IvyEpic_SemiBold_Italic.otf') format('opentype');
-      font-weight: 600;
-      font-style: italic;
-    }
-    @font-face {
-      font-family: 'IvyEpic';
-      src: url('/fonts/IvyEpic_Bold_Italic.otf') format('opentype');
-      font-weight: 700;
-      font-style: italic;
-    }
-    @font-face {
-      font-family: 'IvyEpic';
-      src: url('/fonts/IvyEpic_ExtraBold_Italic.otf') format('opentype');
-      font-weight: 800;
-      font-style: italic;
-    }
-    @font-face {
-      font-family: 'IvyEpic';
-      src: url('/fonts/IvyEpic_Black_Italic.otf') format('opentype');
-      font-weight: 900;
-      font-style: italic;
-    }
-    
-    body {
-      font-family: 'IvyEpic', 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: #181818;
-      color: #f8f9fb;
-      margin: 0;
-      padding: 0;
-      line-height: 1.7;
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
     
     .top-info {
-      position: absolute;
       top: 0;
       left: 0;
       width: 100%;
@@ -321,19 +202,33 @@
       margin-bottom: 4rem;
       width: 100%;
       background: none;
+      position: relative;
+    }
+    .projects::before {
+      content: '';
+      position: absolute;
+      top: -2rem;
+      left: -2rem;
+      right: -2rem;
+      bottom: -2rem;
+      background: radial-gradient(circle at 50% 50%, rgba(166, 200, 255, 0.05) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: -1;
     }
     .project {
-      background: #23272f;
+      background: rgba(255, 255, 255, 0.18);
+      backdrop-filter: blur(24px) saturate(180%);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
+      border: 1.5px solid rgba(255, 255, 255, 0.18);
+      border-radius: 2.5rem;
       padding: 2.5rem 2rem 2rem 2rem;
-      border-radius: 18px;
       text-decoration: none;
       color: #f8f9fb;
-      transition: all 0.3s cubic-bezier(.4,2,.3,1);
-      border: 1px solid #333;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       position: relative;
       overflow: hidden;
       max-width: 370px;
-      box-shadow: 0 2px 16px 0 rgba(0,0,0,0.12);
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.25), 0 1.5px 8px 0 rgba(255, 255, 255, 0.04) inset;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
@@ -353,27 +248,47 @@
       left: 100%;
     }
     .project:hover {
-      background: #23272f;
-      transform: translateY(-5px) scale(1.03);
-      border-color: #444;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+      background: rgba(255, 255, 255, 0.22);
+      border-color: rgba(255, 255, 255, 0.25);
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 15px 45px 0 rgba(0, 0, 0, 0.3), 0 1.5px 8px 0 rgba(255, 255, 255, 0.04) inset;
     }
     .project h3 {
       margin: 0 0 1.2rem 0;
       font-size: 1.6rem;
       font-weight: 700;
+      color: #f8f9fb;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+    }
+    .project:hover h3 {
       color: #fff;
+      text-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
     }
     .project p {
       margin: 0 0 1.2rem 0;
       opacity: 0.85;
       line-height: 1.5;
       font-size: 1.08rem;
+      color: #e0e0e0;
+      transition: all 0.3s ease;
+    }
+    .project:hover p {
+      opacity: 0.95;
+      color: #f8f9fb;
     }
     .project-icon {
       font-size: 2.2rem;
       margin-bottom: 1.2rem;
       display: block;
+      color: #a6c8ff;
+      filter: drop-shadow(0 2px 8px rgba(166, 200, 255, 0.3));
+      transition: all 0.3s ease;
+    }
+    .project:hover .project-icon {
+      color: #f8f9fb;
+      filter: drop-shadow(0 4px 12px rgba(166, 200, 255, 0.5));
+      transform: scale(1.1);
     }
     .project-links {
       margin-top: auto;
@@ -381,51 +296,61 @@
       gap: 1rem;
     }
     .project-link {
-      padding: 0.6rem 1.2rem;
-      background: #181818;
-      border-radius: 8px;
+      padding: 0.75rem 1.5rem;
+      background: rgba(255, 255, 255, 0.18);
+      backdrop-filter: blur(24px) saturate(180%);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
+      border: 1.5px solid rgba(255, 255, 255, 0.18);
+      border-radius: 1.5rem;
       text-decoration: none;
       color: #f8f9fb;
       font-size: 1rem;
-      transition: all 0.2s;
-      border: 1px solid #333;
       font-weight: 500;
+      transition: all 0.2s ease;
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.25), 0 1.5px 8px 0 rgba(255, 255, 255, 0.04) inset;
     }
     .project-link:hover {
-      background: #23272f;
-      color: #fff;
-      border-color: #444;
+      background: rgba(255, 255, 255, 0.25);
+      border-color: rgba(255, 255, 255, 0.3);
+      color: #a6c8ff;
       transform: translateY(-2px);
+      box-shadow: 0 8px 25px 0 rgba(0, 0, 0, 0.3), 0 1.5px 8px 0 rgba(255, 255, 255, 0.04) inset;
     }
     .readme-link {
-      background: #1a2330;
-      border-color: #3a4a6a;
+      background: rgba(166, 200, 255, 0.15);
+      border-color: rgba(166, 200, 255, 0.3);
       color: #a6c8ff;
     }
     .readme-link:hover {
-      background: #22304a;
+      background: rgba(166, 200, 255, 0.25);
+      border-color: rgba(166, 200, 255, 0.4);
       color: #a6c8ff;
     }
     .disabled {
       opacity: 0.5;
       cursor: not-allowed;
       pointer-events: none;
-      background: #23272f !important;
+      background: rgba(255, 255, 255, 0.1) !important;
       color: #888 !important;
+      border-color: rgba(255, 255, 255, 0.1) !important;
     }
     .disabled:hover {
-      background: #23272f !important;
+      background: rgba(255, 255, 255, 0.1) !important;
       transform: none !important;
+      color: #888 !important;
     }
     .project-links small {
       opacity: 0;
       transition: opacity 0.3s ease;
       margin-left: 0.5rem;
       position: absolute;
-      background: rgba(0, 0, 0, 0.9);
-      color: #fff;
-      padding: 0.5rem;
-      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.18);
+      backdrop-filter: blur(24px) saturate(180%);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
+      border: 1.5px solid rgba(255, 255, 255, 0.18);
+      color: #f8f9fb;
+      padding: 0.75rem 1rem;
+      border-radius: 1.5rem;
       font-size: 0.8rem;
       white-space: nowrap;
       pointer-events: none;
@@ -434,6 +359,7 @@
       margin-top: -0.5rem;
       left: 50%;
       transform: translate(-50%, -100%);
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.25), 0 1.5px 8px 0 rgba(255, 255, 255, 0.04) inset;
     }
     .project-links .disabled:hover + small,
     .project-links .disabled:focus + small {
@@ -523,6 +449,10 @@
   <div class="top-info">
     <div class="location"><a href="https://x.com/kamer___n" class="location-link" target="_blank" rel="noopener">Kam</a> is based in New York City</div>
     <div class="clock" id="clock"></div>
+  </div>
+  <div class="bottom-lines">
+    <div class="line-left"></div>
+    <div class="line-right"></div>
   </div>
   <div class="glass-nav">
     <nav>
@@ -629,7 +559,7 @@
         <p>Interactive phone number app where you can call to hear a playlist and leave messages that get interlooped into the audio experience</p>
         <div class="project-links">
           <a href="https://888-forgott.radio" class="project-link" target="_blank">Visit Site</a>
-          <a href="tel:+18883674608" class="project-link readme-link disabled">+1 888 367 4608</a> 
+          <a href="tel:+18883674608" class="project-link readme-link disabled">888-367-4608</a> 
           <small>(sunset Febuary 2025)</small>
         </div>
       </div>
@@ -644,6 +574,8 @@
       </div>
     </div>
   </div>
+  <div class="orb pulse"></div>
+  <script src="/libraries/glassmorphic-ui.js"></script>
   <script>
     function updateClock() {
       const now = new Date();

@@ -3,12 +3,41 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>Surf Spot Visualizer</title>
+	<title>Rough Waters Audio Zoom - The Musical Web</title>
+	<link rel="stylesheet" href="/libraries/glassmorphic.css">
 	<style>
 		body {
 			margin: 0;
 			padding: 0;
 			overflow: hidden;
+			background: #181818;
+		}
+
+		/* Project-specific glassmorphic elements */
+		.glass-project-info {
+			position: fixed;
+			top: 2rem;
+			left: 2rem;
+			z-index: 1000;
+			max-width: 300px;
+		}
+
+		.glass-controls {
+			position: fixed;
+			top: 2rem;
+			right: 2rem;
+			z-index: 1000;
+			display: flex;
+			flex-direction: column;
+			gap: 1rem;
+		}
+
+		.glass-audio-info {
+			position: fixed;
+			bottom: 2rem;
+			left: 2rem;
+			z-index: 1000;
+			max-width: 300px;
 		}
 
 		#surf-spot-list {
@@ -48,6 +77,40 @@
 </script>
 
 <body>
+	<!-- Glassmorphic Navigation -->
+	<div class="glass-nav">
+		<a href="/" class="glass-text-primary">← Back to Portfolio</a>
+		<a href="/roughWaters" class="glass-text-secondary">🌊 Basic View</a>
+	</div>
+
+	<!-- Glassmorphic Project Info -->
+	<div class="glass-project-info">
+		<div class="glass-card">
+			<h3 style="margin: 0 0 1rem 0; color: var(--text-primary);">Rough Waters Audio Zoom</h3>
+			<p style="margin: 0; color: var(--text-secondary); font-size: 0.9rem;">
+				Interactive surf spot explorer with audio-responsive text and wave data.
+			</p>
+		</div>
+	</div>
+
+	<!-- Glassmorphic Controls -->
+	<div class="glass-controls">
+		<div class="glass-status" id="audioZoomStatus">
+			<span>Audio Zoom Active</span>
+		</div>
+	</div>
+
+	<!-- Glassmorphic Audio Info -->
+	<div class="glass-audio-info">
+		<div class="glass-card">
+			<h4 style="margin: 0 0 1rem 0; color: var(--text-primary);">Audio Controls</h4>
+			<div style="display: flex; flex-direction: column; gap: 0.5rem;">
+				<button class="glass-button" onclick="toggleAudioZoom()">🎵 Toggle Audio</button>
+				<button class="glass-button" onclick="resetAudioZoom()">🔄 Reset</button>
+			</div>
+		</div>
+	</div>
+
 	<div id="surf-spot-list">
 		<ul>
 			<!-- Surf spots will be populated here dynamically -->
@@ -312,14 +375,25 @@
 			fill(255);
 			textAlign(CENTER, CENTER);
 			textFont('Arial', 'bold');
-            const progressSeconds = Tone.TransportTime().toSeconds();
+			const progressSeconds = Tone.TransportTime().toSeconds();
 			let progress = audio ? Math.abs(progressSeconds / audio.buffer.duration) : 0;
-            console.log(audio, progressSeconds);
+			console.log(audio, progressSeconds);
 			let size = map(progress, 0, 1, 16, 100);
 			textSize(size);
 			text(surfSpot.quote, width / 2, height / 2);
 		}
+
+		// Placeholder for audio zoom functionality
+		function toggleAudioZoom() {
+			console.log('Toggle audio zoom');
+		}
+		
+		function resetAudioZoom() {
+			console.log('Reset audio zoom');
+		}
 	</script>
+	<!-- Glassmorphic UI Controller -->
+	<script src="/libraries/glassmorphic-ui.js"></script>
 </body>
 
 </html>

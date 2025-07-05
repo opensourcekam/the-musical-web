@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Synth</title>
+    <title>Image Scan Synth - The Musical Web</title>
+    <link rel="stylesheet" href="/libraries/glassmorphic.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.26/Tone.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
@@ -15,113 +16,124 @@
             margin: 0;
         }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-family: 'IvyEpic', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
             font-weight: 100;
+            background: #181818;
         }
-        #startButton {
-            position: fixed;
-            top: 10px;
-            right: 10px;
-            padding: 10px 20px;
-            background-color: #007aff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer;
-        }
+        
         canvas {
             display: block;
             margin: auto;
         }
-        #debug {
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            padding: 1rem;
-            text-align: right;
-        }
-        #debug h3 {
-            font-style: italic;
-            margin: 0;
-            font-weight: 300;
-            text-decoration:underline;
-        }
-        #debug * {
-            font-size: x-large;
-        }
-        #controls {
+
+        /* Project-specific glassmorphic elements */
+        .glass-project-info {
             position: fixed;
-            top: 10px;
-            left: 10px;
-            background: rgba(255, 255, 255, 0.8);
-            padding: 10px;
-            border-radius: 5px;
+            top: 2rem;
+            left: 2rem;
+            z-index: 1000;
+            max-width: 300px;
+        }
+
+        .glass-controls {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .glass-debug {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 1000;
+            max-width: 300px;
         }
 
         #current-color {
             position: absolute;
-            right: 0;
             top: 0;
-
-            height: 400px;
-            width: 400px;
-            background-color:rgba(255, 255, 255, 0.8);
+            right: 0;
+            bottom: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.1);
             z-index: -1;
+            opacity: 0.5;
         }
     </style>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-04VDK5DXZS"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-04VDK5DXZS');
+    </script>
+    <!-- Glassmorphic UI Controller -->
+    <script src="/libraries/glassmorphic-ui.js"></script>
 </head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-04VDK5DXZS"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-04VDK5DXZS');
-</script>
 <body>
-    <button id="startButton">Start Audio</button>
-    <canvas id="current-color"></canvas>
-    <!-- <div id="controls">
-        <label for="oscType">Oscillator Type:</label>
-        <select id="oscType">
-            <option value="sine">Sine</option>
-            <option value="square">Square</option>
-            <option value="sawtooth">Sawtooth</option>
-            <option value="triangle">Triangle</option>
-        </select>
-        <br>
-        <label for="attack">Attack:</label>
-        <input type="range" id="attack" min="0" max="5" step="0.01">
-        <br>
-        <label for="decay">Decay:</label>
-        <input type="range" id="decay" min="0" max="5" step="0.01">
-        <br>
-        <label for="sustain">Sustain:</label>
-        <input type="range" id="sustain" min="0" max="1" step="0.01">
-        <br>
-        <label for="release">Release:</label>
-        <input type="range" id="release" min="0" max="5" step="0.01">
-    </div> -->
-    <div id="debug">
-        <h3>Debug</h3>
-        <div>
-            <span>Index: </span><span id="index">0</span>
-        </div>
-        <div>
-            <span>Pixels: </span><span id="pixels">0</span>
-        </div>
-        <div>
-            <span>Playing: </span><span id="playing">0</span>
-        </div>
-        <div>
-            <p>RGBA, X: </p><span id="rgbax">0-0-0-0-0</span>
-        </div>
-        <div>
-            <span>Note Index C: </span><span id="note-index-c">0</span>
-            <span>Note Index G: </span><span id="note-index-g">0</span>
-        </div>
+    <!-- Glassmorphic Navigation -->
+    <div class="glass-nav">
+      <a href="/" class="glass-text-primary">← Back to Portfolio</a>
     </div>
+
+    <!-- Glassmorphic Project Info -->
+    <div class="glass-project-info">
+      <div class="glass-card">
+        <h3 style="margin: 0 0 1rem 0; color: var(--text-primary);">Image Scan Synth</h3>
+        <p style="margin: 0; color: var(--text-secondary); font-size: 0.9rem;">
+          Convert images to sound through pixel analysis and color-to-frequency mapping.
+        </p>
+      </div>
+    </div>
+
+    <!-- Glassmorphic Controls -->
+    <div class="glass-controls">
+      <button class="glass-button" id="startButton">🎵 Start Audio</button>
+      <div class="glass-status" id="audioStatus">
+        <span>Audio Ready</span>
+      </div>
+    </div>
+
+    <!-- Glassmorphic Debug Panel -->
+    <div class="glass-debug">
+      <div class="glass-card">
+        <h4 style="margin: 0 0 1rem 0; color: var(--text-primary); font-style: italic;">Debug Info</h4>
+        <div style="display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.9rem;">
+          <div style="display: flex; justify-content: space-between;">
+            <span class="glass-text-secondary">Index:</span>
+            <span class="glass-text-primary" id="index">0</span>
+          </div>
+          <div style="display: flex; justify-content: space-between;">
+            <span class="glass-text-secondary">Pixels:</span>
+            <span class="glass-text-primary" id="pixels">0</span>
+          </div>
+          <div style="display: flex; justify-content: space-between;">
+            <span class="glass-text-secondary">Playing:</span>
+            <span class="glass-text-primary" id="playing">0</span>
+          </div>
+          <div style="display: flex; justify-content: space-between;">
+            <span class="glass-text-secondary">RGBA, X:</span>
+            <span class="glass-text-primary" id="rgbax">0-0-0-0-0</span>
+          </div>
+          <div style="display: flex; justify-content: space-between;">
+            <span class="glass-text-secondary">Note C:</span>
+            <span class="glass-text-primary" id="note-index-c">0</span>
+          </div>
+          <div style="display: flex; justify-content: space-between;">
+            <span class="glass-text-secondary">Note G:</span>
+            <span class="glass-text-primary" id="note-index-g">0</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <canvas id="current-color"></canvas>
 </body>
 </html>

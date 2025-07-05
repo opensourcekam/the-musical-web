@@ -127,6 +127,7 @@ function draw() {
 	if (playingRow >= 0) {
 		stroke(colorMap);
 		line(5, playingRow, width, playingRow);
+		document.getElementById('current-color').style.backgroundColor = `#${colorMap.map(c => c.toString(16).padStart(2, '0')).join('')}`;
 
 		let currentTime = millis();
 		if (currentTime - lastUpdateTime > rowInterval) {

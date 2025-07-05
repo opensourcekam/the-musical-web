@@ -4,128 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Collaborate – Kam Robinson</title>
+  <link rel="stylesheet" href="/libraries/glassmorphic.css">
   <style>
-    @font-face {
-      font-family: 'IvyEpic';
-      src: url('/fonts/IvyEpic_Variable_Thin.otf') format('opentype');
-      font-weight: 100;
-      font-style: normal;
-    }
-    @font-face {
-      font-family: 'IvyEpic';
-      src: url('/fonts/IvyEpic_ExtraLight.otf') format('opentype');
-      font-weight: 200;
-      font-style: normal;
-    }
-    @font-face {
-      font-family: 'IvyEpic';
-      src: url('/fonts/IvyEpic_Light.otf') format('opentype');
-      font-weight: 300;
-      font-style: normal;
-    }
-    @font-face {
-      font-family: 'IvyEpic';
-      src: url('/fonts/IvyEpic_Regular.otf') format('opentype');
-      font-weight: 400;
-      font-style: normal;
-    }
-    @font-face {
-      font-family: 'IvyEpic';
-      src: url('/fonts/IvyEpic_Medium.otf') format('opentype');
-      font-weight: 500;
-      font-style: normal;
-    }
-    @font-face {
-      font-family: 'IvyEpic';
-      src: url('/fonts/IvyEpic_SemiBold.otf') format('opentype');
-      font-weight: 600;
-      font-style: normal;
-    }
-    @font-face {
-      font-family: 'IvyEpic';
-      src: url('/fonts/IvyEpic_Bold.otf') format('opentype');
-      font-weight: 700;
-      font-style: normal;
-    }
-    @font-face {
-      font-family: 'IvyEpic';
-      src: url('/fonts/IvyEpic_ExtraBold.otf') format('opentype');
-      font-weight: 800;
-      font-style: normal;
-    }
-    @font-face {
-      font-family: 'IvyEpic';
-      src: url('/fonts/IvyEpic_Black.otf') format('opentype');
-      font-weight: 900;
-      font-style: normal;
-    }
-    @font-face {
-      font-family: 'IvyEpic';
-      src: url('/fonts/IvyEpic_Thin_Italic.otf') format('opentype');
-      font-weight: 100;
-      font-style: italic;
-    }
-    @font-face {
-      font-family: 'IvyEpic';
-      src: url('/fonts/IvyEpic_ExtraLight_Italic.otf') format('opentype');
-      font-weight: 200;
-      font-style: italic;
-    }
-    @font-face {
-      font-family: 'IvyEpic';
-      src: url('/fonts/IvyEpic_Light_Italic.otf') format('opentype');
-      font-weight: 300;
-      font-style: italic;
-    }
-    @font-face {
-      font-family: 'IvyEpic';
-      src: url('/fonts/IvyEpic_Italic.otf') format('opentype');
-      font-weight: 400;
-      font-style: italic;
-    }
-    @font-face {
-      font-family: 'IvyEpic';
-      src: url('/fonts/IvyEpic_Medium_Italic.otf') format('opentype');
-      font-weight: 500;
-      font-style: italic;
-    }
-    @font-face {
-      font-family: 'IvyEpic';
-      src: url('/fonts/IvyEpic_SemiBold_Italic.otf') format('opentype');
-      font-weight: 600;
-      font-style: italic;
-    }
-    @font-face {
-      font-family: 'IvyEpic';
-      src: url('/fonts/IvyEpic_Bold_Italic.otf') format('opentype');
-      font-weight: 700;
-      font-style: italic;
-    }
-    @font-face {
-      font-family: 'IvyEpic';
-      src: url('/fonts/IvyEpic_ExtraBold_Italic.otf') format('opentype');
-      font-weight: 800;
-      font-style: italic;
-    }
-    @font-face {
-      font-family: 'IvyEpic';
-      src: url('/fonts/IvyEpic_Black_Italic.otf') format('opentype');
-      font-weight: 900;
-      font-style: italic;
-    }
-    
-    body {
-      font-family: 'IvyEpic', 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: #181818;
-      color: #f8f9fb;
-      margin: 0;
-      padding: 0;
-      line-height: 1.7;
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
     .top-info {
-      position: absolute;
       top: 0;
       left: 0;
       width: 100%;
@@ -294,6 +175,21 @@
       max-width: 800px;
       width: 100%;
       margin-bottom: 2.5rem;
+      background: rgba(255, 255, 255, 0.18);
+      backdrop-filter: blur(24px) saturate(180%);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
+      border: 1.5px solid rgba(255, 255, 255, 0.18);
+      border-radius: 2.5rem;
+      padding: 2.5rem 2rem 2rem 2rem;
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.25), 0 1.5px 8px 0 rgba(255, 255, 255, 0.04) inset;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .section:hover {
+      background: rgba(255, 255, 255, 0.22);
+      border-color: rgba(255, 255, 255, 0.25);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.3), 0 1.5px 8px 0 rgba(255, 255, 255, 0.04) inset;
     }
     .section-title {
       font-size: 1.3rem;
@@ -329,14 +225,24 @@
     }
     .quality {
       font-size: 1.08rem;
-      background: #181818;
-      border-radius: 8px;
-      padding: 0.5rem 1.2rem;
-      border: 1px solid #333;
+      background: rgba(166, 200, 255, 0.15);
+      backdrop-filter: blur(24px) saturate(180%);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
+      border: 1.5px solid rgba(166, 200, 255, 0.3);
+      border-radius: 1.5rem;
+      padding: 0.75rem 1.5rem;
       color: #a6c8ff;
       font-weight: 600;
       margin-bottom: 0.5rem;
-      box-shadow: 0 1px 4px 0 rgba(0,0,0,0.08);
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.25), 0 1.5px 8px 0 rgba(255, 255, 255, 0.04) inset;
+      transition: all 0.2s ease;
+    }
+    
+    .quality:hover {
+      background: rgba(166, 200, 255, 0.25);
+      border-color: rgba(166, 200, 255, 0.4);
+      transform: translateY(-1px);
+      box-shadow: 0 8px 25px 0 rgba(0, 0, 0, 0.3), 0 1.5px 8px 0 rgba(255, 255, 255, 0.04) inset;
     }
     .footer {
       text-align: center;
@@ -398,6 +304,10 @@
   <div class="top-info">
     <div class="location"><a href="https://x.com/kamer___n" class="location-link" target="_blank" rel="noopener">Kam</a> is based in New York City</div>
     <div class="clock" id="clock"></div>
+  </div>
+  <div class="bottom-lines">
+    <div class="line-left"></div>
+    <div class="line-right"></div>
   </div>
   <div class="glass-nav">
     <nav>
@@ -526,6 +436,7 @@
         <a href="http://instagram.com/opensourcekam/" target="_blank" style="color: #E4405F; text-decoration: none;"><i data-feather="camera" class="feather-icon"></i> Instagram</a>
     </div>
   </div>
+  <div class="orb pulse"></div>
   <script>
     function updateClock() {
       const now = new Date();
@@ -540,5 +451,7 @@
     // Initialize feather icons
     feather.replace();
   </script>
+  <!-- Glassmorphic UI Controller -->
+  <script src="/libraries/glassmorphic-ui.js"></script>
 </body>
 </html> 
